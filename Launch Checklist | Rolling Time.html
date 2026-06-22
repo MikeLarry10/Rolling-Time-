@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Launch Checklist | Rolling Time</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: rgb(55,69,150);
+      --navy-dark: rgb(35,46,110);
+      --navy-pale: rgb(230,233,248);
+      --cream: rgb(237,234,231);
+      --cream-deep: rgb(224,220,216);
+      --white: #ffffff;
+      --text-headline: rgb(18,18,22);
+      --text-body: rgb(55,55,62);
+      --text-muted: rgb(110,110,118);
+      --text-faint: rgb(160,158,162);
+      --rule: rgb(0 0 0 / 0.09);
+      --green: rgb(22,163,74);
+      --green-pale: rgb(220,252,231);
+      --amber: rgb(180,83,9);
+      --amber-pale: rgb(254,243,199);
+      --red: rgb(185,28,28);
+      --red-pale: rgb(254,226,226);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--text-body);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: var(--navy);
+      padding: 2.5rem clamp(1.5rem,5vw,4rem);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgb(0 0 0 / 0.15);
+    }
+    .header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .header-left { display: flex; align-items: center; gap: 1.25rem; }
+    .header-logo img { height: 40px; filter: brightness(0) invert(1); }
+    .header-divider { width: 1px; height: 32px; background: rgba(255,255,255,0.2); }
+    .header-title { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+    .header-right { display: flex; align-items: center; gap: 1.5rem; }
+    .progress-wrap { display: flex; align-items: center; gap: 0.75rem; }
+    .progress-track { width: 160px; height: 5px; background: rgba(255,255,255,0.15); border-radius: 100px; overflow: hidden; }
+    .progress-fill { height: 100%; background: #fff; border-radius: 100px; transition: width 0.4s ease; }
+    .progress-label { font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.7); white-space: nowrap; }
+    .progress-label span { color: #fff; }
+    .btn-print {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.8);
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-print:hover { background: rgba(255,255,255,0.2); color: #fff; }
+
+    /* ── BODY ── */
+    .body { max-width: 860px; margin: 0 auto; padding: 3rem clamp(1.5rem,5vw,4rem) 6rem; }
+
+    /* ── SECTION ── */
+    .section { margin-bottom: 2.5rem; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .section-badge {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.75rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .badge-red    { background: var(--red-pale);   color: var(--red);   }
+    .badge-amber  { background: var(--amber-pale);  color: var(--amber); }
+    .badge-navy   { background: var(--navy-pale);   color: var(--navy);  }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--text-headline);
+      line-height: 1.1;
+    }
+    .section-subtitle {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      padding-left: 0.25rem;
+    }
+    .section-progress {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+    /* ── ITEMS ── */
+    .item {
+      background: var(--white);
+      border-radius: 6px;
+      margin-bottom: 0.6rem;
+      border: 1.5px solid var(--rule);
+      transition: border-color 0.2s, background 0.2s;
+      cursor: pointer;
+      user-select: none;
+    }
+    .item:hover { border-color: var(--navy-pale); }
+    .item.done { background: var(--green-pale); border-color: rgb(187,247,208); }
+    .item-main {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+    }
+    .item-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--cream-deep);
+      flex-shrink: 0;
+      margin-top: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+      background: var(--cream);
+    }
+    .item.done .item-check {
+      background: var(--green);
+      border-color: var(--green);
+    }
+    .item-check svg { display: none; }
+    .item.done .item-check svg { display: block; }
+    .item-body { flex: 1; }
+    .item-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-headline);
+      margin-bottom: 0.25rem;
+      transition: color 0.2s;
+    }
+    .item.done .item-title {
+      color: var(--green);
+      text-decoration: line-through;
+      text-decoration-color: rgb(134,239,172);
+    }
+    .item-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .item.done .item-desc { color: rgb(134,239,172); }
+    .item-tag {
+      display: inline-block;
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.18rem 0.5rem;
+      border-radius: 3px;
+      margin-right: 0.4rem;
+      margin-top: 0.5rem;
+    }
+    .tag-you   { background: rgb(243,244,246); color: var(--text-muted); }
+    .tag-dev   { background: var(--navy-pale);  color: var(--navy); }
+    .tag-done  { background: var(--green-pale); color: var(--green); }
+
+    /* ── DONE BANNER ── */
+    .done-banner {
+      display: none;
+      background: var(--navy);
+      border-radius: 8px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .done-banner.show { display: block; }
+    .done-banner h2 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .done-banner p { font-size: 0.88rem; color: rgba(255,255,255,0.6); }
+
+    /* ── RESET ── */
+    .reset-wrap { text-align: center; padding-top: 2rem; }
+    .btn-reset {
+      background: none;
+      border: 1px solid var(--rule);
+      color: var(--text-faint);
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.65rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-reset:hover { border-color: var(--text-muted); color: var(--text-muted); }
+
+    /* ── PRINT ── */
+    @media print {
+      .header { position: relative; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .btn-print { display: none; }
+      .progress-wrap { display: none; }
+      .item { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
+      .item.done { background: var(--green-pale) !important; }
+      .done-banner { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .reset-wrap { display: none; }
+    }
+
+    @media(max-width: 600px) {
+      .header-right { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="header-logo">
+        <img src="https://www.rollingtime.co.za/cdn/shop/files/SmartProp_Social_Media_Posts_-5-removebg-preview_copy.png?height=200&v=1768479644" alt="Rolling Time">
+      </div>
+      <div class="header-divider"></div>
+      <div class="header-title">Launch Checklist</div>
+    </div>
+    <div class="header-right">
+      <div class="progress-wrap">
+        <div class="progress-track"><div class="progress-fill" id="global-bar" style="width:0%"></div></div>
+        <div class="progress-label"><span id="global-count">0</span> / <span id="global-total">0</span> done</div>
+      </div>
+      <button class="btn-print" onclick="window.print()">Print / PDF</button>
+    </div>
+  </div>
+</header>
+
+<div class="body">
+
+  <div class="done-banner" id="done-banner">
+    <h2>You are ready to launch.</h2>
+    <p>Every item is checked. Rolling Time is good to go live.</p>
+  </div>
+
+  <!-- SECTION 1: BLOCKERS -->
+  <div class="section" data-section="blockers">
+    <div class="section-header">
+      <span class="section-badge badge-red">Blockers</span>
+      <h2 class="section-title">Cannot launch without these.</h2>
+      <span class="section-progress" id="prog-blockers"></span>
+    </div>
+    <p class="section-subtitle">These must all be ticked before you go live. Every other item depends on them.</p>
+
+    <div class="item" data-id="reg" data-section="blockers">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Business registration approved</div>
+          <div class="item-desc">CIPC registration confirmed. Everything below this depends on it.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="payfast-account" data-section="blockers">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">PayFast merchant account created</div>
+          <div class="item-desc">Apply at payfast.co.za after registration is confirmed. You will receive a Merchant ID and Merchant Key.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="payfast-keys" data-section="blockers">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">PayFast credentials added to all 7 product pages</div>
+          <div class="item-desc">Replace YOUR_MERCHANT_ID and YOUR_MERCHANT_KEY in each product page. Set PAYFAST_SANDBOX to false. Ask Claude to do this once you have the credentials.</div>
+          <span class="item-tag tag-dev">Claude can do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="photos" data-section="blockers">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Product photography done and uploaded</div>
+          <div class="item-desc">New photos for all 7 products shot and replaced on the website. See the photography brief in the marketing plan.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="live" data-section="blockers">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Website uploaded to Domains.co.za hosting</div>
+          <div class="item-desc">Upload the website-output folder contents via cPanel File Manager or FTP. Make sure rollingtime.co.za resolves to the new pages.</div>
+          <span class="item-tag tag-you">You to do</span>
+          <span class="item-tag tag-dev">Claude can help</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="ssl" data-section="blockers">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">SSL certificate active (HTTPS)</div>
+          <div class="item-desc">PayFast requires HTTPS. Enable the free Let's Encrypt SSL certificate from cPanel under Security > SSL/TLS. Confirm the site loads on https://rollingtime.co.za.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="checkout-test" data-section="blockers">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Full checkout tested end to end</div>
+          <div class="item-desc">Complete a real test purchase on the live site. Confirm payment goes through PayFast, success page loads, and you receive a payment notification email.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: BEFORE LAUNCH -->
+  <div class="section" data-section="before">
+    <div class="section-header">
+      <span class="section-badge badge-amber">Before Launch</span>
+      <h2 class="section-title">Complete in the week before going live.</h2>
+      <span class="section-progress" id="prog-before"></span>
+    </div>
+    <p class="section-subtitle">Not hard blockers but will hurt you if skipped.</p>
+
+    <div class="item" data-id="pixel-id" data-section="before">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Meta Pixel ID added to all pages</div>
+          <div class="item-desc">Create a Facebook Page, then go to Meta Business Manager > Events Manager > Connect Data Source > Web. Copy your Pixel ID and share it with Claude. All 14 pages will be updated in one go.</div>
+          <span class="item-tag tag-you">Get Pixel ID</span>
+          <span class="item-tag tag-dev">Claude updates pages</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="fb-page" data-section="before">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Facebook Page created and populated</div>
+          <div class="item-desc">Create a Facebook Page for Rolling Time. Add profile photo, cover photo, bio, website link, and at least 3 posts before launch day.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="instagram" data-section="before">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Instagram account created and populated</div>
+          <div class="item-desc">Set up the account, switch to a Business or Creator account, add the website link, and post at least 3 pieces of content before launch.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="tiktok" data-section="before">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">TikTok account created and first video posted</div>
+          <div class="item-desc">Create the account, post at least 1 video before launch day. A process video or collection reveal works well as a first post.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="smtp" data-section="before">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Welcome email SMTP password added and tested</div>
+          <div class="item-desc">Open dashboard/config.json and replace YOUR_EMAIL_PASSWORD with your sales@rollingtime.co.za password. Test by submitting the popup on the website.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="order-notif" data-section="before">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Order notification email added to dashboard</div>
+          <div class="item-desc">Get an email to sales@rollingtime.co.za whenever a new order comes in via the dashboard. Ask Claude to add this - takes about 10 minutes.</div>
+          <span class="item-tag tag-dev">Claude can do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="roll10-code" data-section="before">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">ROLL10 discount code created in the dashboard</div>
+          <div class="item-desc">The popup promises 10% off with code ROLL10. Go to the dashboard, open Discount Codes, and create the code (type: percent, value: 10). The dashboard already logs every redemption — but the code must exist first or redemptions won't be tracked.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="email-nurture" data-section="before">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Email nurture sequence written and ready to send</div>
+          <div class="item-desc">The welcome email (Day 0) fires automatically. The remaining 4 emails in the sequence from the marketing plan (Day 2, Day 4, Day 7, Day 10) need to be written and sent manually or set up in a free tool like Mailchimp. Do this before launch so leads captured on day one get followed up.</div>
+          <span class="item-tag tag-you">You to do</span>
+          <span class="item-tag tag-dev">Claude can write copy</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="courier" data-section="before">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Courier account set up</div>
+          <div class="item-desc">Create a free account on Bob Go (bobgo.co.za) - easiest for small stores, compares rates across The Courier Guy, Pargo, and others. Test a quote for a Cape Town to Johannesburg shipment.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="packaging" data-section="before">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Packaging sourced and ready</div>
+          <div class="item-desc">Boxes, tissue paper, padding, and any branded inserts. Have enough stock to cover at least your first 20 orders.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="bank" data-section="before">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Business bank account linked to PayFast</div>
+          <div class="item-desc">PayFast pays out to a linked bank account. Make sure this is set up in your PayFast dashboard so payments clear correctly.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="inventory-check" data-section="before">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Inventory counts updated in dashboard</div>
+          <div class="item-desc">Log into the dashboard and confirm the stock count for each of the 7 products matches what you physically have ready to ship.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: NICE TO HAVE -->
+  <div class="section" data-section="nice">
+    <div class="section-header">
+      <span class="section-badge badge-navy">Good to Do</span>
+      <h2 class="section-title">Strong launch but not critical.</h2>
+      <span class="section-progress" id="prog-nice"></span>
+    </div>
+    <p class="section-subtitle">These improve the experience. Tick them off as time allows.</p>
+
+    <div class="item" data-id="sitemap" data-section="nice">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Sitemap.xml and robots.txt created</div>
+          <div class="item-desc">Helps Google index the site faster. Ask Claude to generate both files.</div>
+          <span class="item-tag tag-dev">Claude can do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="404" data-section="nice">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Custom 404 page built</div>
+          <div class="item-desc">A branded page for wrong URLs that sends visitors to the collection. Ask Claude to build it.</div>
+          <span class="item-tag tag-dev">Claude can do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="success-page" data-section="nice">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Payment success page polished</div>
+          <div class="item-desc">The current page is minimal. A better version with next steps and a link to follow on Instagram would reduce post-purchase anxiety.</div>
+          <span class="item-tag tag-dev">Claude can do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="gsc" data-section="nice">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Google Search Console set up</div>
+          <div class="item-desc">Free tool that shows how Google sees your site. Set up after the site is live at search.google.com/search-console.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="dashboard-live" data-section="nice">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Dashboard server deployed on hosting</div>
+          <div class="item-desc">Currently runs locally on your Mac. For it to track live visitors and send emails, the Node.js dashboard server needs to be deployed. Ask Claude for options.</div>
+          <span class="item-tag tag-dev">Claude can help</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="alert-test" data-section="nice">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Low stock email alert tested</div>
+          <div class="item-desc">In the dashboard go to Settings > Alerts and click Test Alert to confirm emails are reaching sales@rollingtime.co.za.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="marketing-plan" data-section="nice">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">First week of social content scheduled</div>
+          <div class="item-desc">Captions are written. Have the first 3 posts per platform ready to go on launch day. Use Meta Business Suite to schedule Facebook and Instagram in advance.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="legal-review" data-section="nice">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Legal pages reviewed and personalised</div>
+          <div class="item-desc">Privacy, Terms, Returns, and Shipping pages are built and linked. Read through each one and confirm the details match your actual business setup.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="closer-script" data-section="nice">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">CLOSER DM script saved to your phone</div>
+          <div class="item-desc">The full word-for-word Instagram DM script is in Section 05 of the marketing plan. Save it as a note or in your phone's saved messages so you can reference it when replying to followers. Every person who likes, follows, or comments is a warm lead to DM.</div>
+          <span class="item-tag tag-you">You to do</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" data-id="returns-page" data-section="nice">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Returns page updated to match the 30-day guarantee</div>
+          <div class="item-desc">All 7 product pages now show the 30-day no-questions return guarantee above the PayFast button. The returns.html page should say the same thing — same language, same 30 days, no questions. Ask Claude to update it so there is no contradiction between the product page promise and the legal page.</div>
+          <span class="item-tag tag-dev">Claude can do</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALREADY DONE -->
+  <div class="section" data-section="done">
+    <div class="section-header">
+      <span class="section-badge" style="background:var(--green-pale);color:var(--green);">Already Done</span>
+      <h2 class="section-title">Completed and in place.</h2>
+      <span class="section-progress" id="prog-done"></span>
+    </div>
+    <p class="section-subtitle">These are ticked automatically. Good work.</p>
+
+    <div class="item done" data-id="website-built" data-section="done">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Website built - 7 product pages, collection, home, story, contact, wholesale</div>
+          <div class="item-desc">Full site with nav, footer, mobile responsive, and brand identity.</div>
+          <span class="item-tag tag-done">Done</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item done" data-id="payfast-code" data-section="done">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">PayFast checkout code integrated on all 7 product pages</div>
+          <div class="item-desc">MD5 signature, form POST, sandbox mode. Credentials to be filled in once registration is done.</div>
+          <span class="item-tag tag-done">Done</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item done" data-id="legal-pages" data-section="done">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">All 4 legal pages created</div>
+          <div class="item-desc">Privacy (POPIA), Terms (ECT Act + CPA), Returns, and Shipping. All linked in nav and footer.</div>
+          <span class="item-tag tag-done">Done</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item done" data-id="pixel-code" data-section="done">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Meta Pixel code added to all 14 pages</div>
+          <div class="item-desc">Placeholder YOUR_PIXEL_ID in place. Just needs the real ID swapped in once Meta Business Manager is set up.</div>
+          <span class="item-tag tag-done">Done</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item done" data-id="welcome-email" data-section="done">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Welcome email automation built</div>
+          <div class="item-desc">Triggers automatically on popup signup. Branded HTML email from sales@rollingtime.co.za. Duplicate prevention in place.</div>
+          <span class="item-tag tag-done">Done</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item done" data-id="dashboard" data-section="done">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Analytics dashboard built</div>
+          <div class="item-desc">Orders, full customer CRM (name, phone, address, order history, notes), ad spend, targets, discount codes, wholesale pipeline, inventory, and low stock alerts. All data stored locally on your Mac.</div>
+          <span class="item-tag tag-done">Done</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item done" data-id="marketing-plan-done" data-section="done">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Full growth marketing playbook written</div>
+          <div class="item-desc">Grand Slam Offer, Value Equation, money model, Rule of 100, 5-email nurture sequence, CLOSER DM script, platform strategy, 4-week launch plan, 19 ready-to-post captions, Meta ads framework, and AI image prompts. Built using Hormozi frameworks.</div>
+          <span class="item-tag tag-done">Done</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item done" data-id="price-fixed" data-section="done">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Price standardised to R420 across all pages and inventory</div>
+          <div class="item-desc">All 7 product pages, the collection page, and the dashboard inventory are aligned on R420 with free shipping.</div>
+          <span class="item-tag tag-done">Done</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item done" data-id="guarantee" data-section="done">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">30-day return guarantee added to all 7 product pages</div>
+          <div class="item-desc">"Not in love with it? Return within 30 days for a full refund." appears directly above the PayFast button on every product page. This removes risk at the point of purchase and is one of the highest-impact conversion changes made.</div>
+          <span class="item-tag tag-done">Done</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item done" data-id="product-analytics" data-section="done">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Product performance and drop-off analytics built</div>
+          <div class="item-desc">The dashboard now tracks collection clicks, page views, checkout starts, abandons, and purchases per product. The drop-off table shows exactly where visitors leave and infers the likely reason. Data populates as soon as real visitors browse the live site.</div>
+          <span class="item-tag tag-done">Done</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item done" data-id="alert-daily" data-section="done">
+      <div class="item-main">
+        <div class="item-check">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="item-body">
+          <div class="item-title">Low stock alerts throttled to once per day</div>
+          <div class="item-desc">The server now sends a maximum of one low stock email per calendar day, on the first hourly check after midnight. No more repeated alerts every hour for the same stock situation.</div>
+          <span class="item-tag tag-done">Done</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reset-wrap">
+    <button class="btn-reset" onclick="resetAll()">Reset checklist</button>
+  </div>
+
+</div>
+
+<script>
+  const STORAGE_KEY = 'rt-launch-checklist-v1';
+
+  function loadState() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+    catch(e) { return {}; }
+  }
+  function saveState(state) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  function updateProgress() {
+    const state = loadState();
+    const sections = {};
+
+    document.querySelectorAll('.item').forEach(item => {
+      const sec = item.dataset.section;
+      const id  = item.dataset.id;
+      if (!sections[sec]) sections[sec] = { total: 0, done: 0 };
+      sections[sec].total++;
+      if (item.classList.contains('done')) sections[sec].done++;
+    });
+
+    // Update per-section counts
+    for (const [sec, counts] of Object.entries(sections)) {
+      const el = document.getElementById('prog-' + sec);
+      if (el) el.textContent = counts.done + ' / ' + counts.total;
+    }
+
+    // Global (exclude the "already done" section from the tally)
+    const allItems  = document.querySelectorAll('.item:not([data-section="done"])');
+    const doneItems = document.querySelectorAll('.item:not([data-section="done"]).done');
+    const total = allItems.length;
+    const done  = doneItems.length;
+
+    document.getElementById('global-count').textContent = done;
+    document.getElementById('global-total').textContent = total;
+    document.getElementById('global-bar').style.width = (total ? (done / total * 100) : 0) + '%';
+
+    // All done banner
+    document.getElementById('done-banner').classList.toggle('show', done === total);
+  }
+
+  function init() {
+    const state = loadState();
+    document.querySelectorAll('.item').forEach(item => {
+      const id = item.dataset.id;
+      const sec = item.dataset.section;
+      // "already done" section is always locked
+      if (sec === 'done') { item.classList.add('done'); return; }
+      if (state[id]) item.classList.add('done');
+
+      item.addEventListener('click', () => {
+        const nowDone = !item.classList.contains('done');
+        item.classList.toggle('done', nowDone);
+        const s = loadState();
+        if (nowDone) s[id] = true; else delete s[id];
+        saveState(s);
+        updateProgress();
+      });
+    });
+    updateProgress();
+  }
+
+  function resetAll() {
+    if (!confirm('Reset all checkboxes? This cannot be undone.')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    document.querySelectorAll('.item').forEach(item => {
+      if (item.dataset.section !== 'done') item.classList.remove('done');
+    });
+    updateProgress();
+  }
+
+  init();
+</script>
+</body>
+</html>
