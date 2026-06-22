@@ -1,0 +1,1593 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rolling Time | Handcrafted Wooden Rolling Trays | Cape Town</title>
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.rollingtime.co.za/">
+  <meta name="description" content="Premium hand-finished wooden rolling trays made in Cape Town, South Africa. Shop Collection Y1 — seven limited pieces, each crafted by hand to last a lifetime.">
+  <meta property="og:site_name" content="Rolling Time">
+  <meta property="og:locale" content="en_ZA">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Rolling Time | Handcrafted Wooden Rolling Trays | Cape Town">
+  <meta property="og:description" content="Premium hand-finished wooden rolling trays made in Cape Town, South Africa. Shop Collection Y1 — seven limited pieces, each crafted by hand to last a lifetime.">
+  <meta property="og:url" content="https://www.rollingtime.co.za/">
+  <meta property="og:image" content="https://www.rollingtime.co.za/cdn/shop/files/rolling-time-branded-banner-3_copy.png?v=1770111824">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rolling Time | Handcrafted Wooden Rolling Trays | Cape Town">
+  <meta name="twitter:description" content="Premium hand-finished wooden rolling trays made in Cape Town, South Africa. Shop Collection Y1 — seven limited pieces, each crafted by hand to last a lifetime.">
+  <meta name="twitter:image" content="https://www.rollingtime.co.za/cdn/shop/files/rolling-time-branded-banner-3_copy.png?v=1770111824">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.rollingtime.co.za/#organization",
+      "name": "Rolling Time",
+      "url": "https://www.rollingtime.co.za",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.rollingtime.co.za/cdn/shop/files/SmartProp_Social_Media_Posts_-5-removebg-preview_copy.png?height=200&v=1768479644"
+      },
+      "description": "Handcrafted wooden rolling trays and smoke accessories. Made in Cape Town, South Africa.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cape Town",
+        "addressRegion": "Western Cape",
+        "addressCountry": "ZA"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.rollingtime.co.za/#website",
+      "name": "Rolling Time",
+      "url": "https://www.rollingtime.co.za",
+      "publisher": {
+        "@id": "https://www.rollingtime.co.za/#organization"
+      }
+    }
+  ]
+}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── TOKENS ───────────────────────────────────── */
+    :root {
+      /* Brand palette */
+      --navy:          rgb(55, 69, 150);
+      --navy-dark:     rgb(35, 46, 110);
+      --navy-light:    rgb(85, 100, 185);
+      --navy-pale:     rgb(230, 233, 248);
+
+      /* Surfaces */
+      --cream:         rgb(237, 234, 231);
+      --cream-deep:    rgb(224, 220, 216);
+      --cream-darker:  rgb(210, 205, 200);
+      --white:         #ffffff;
+
+      /* Text */
+      --text-headline: rgb(18, 18, 22);
+      --text-body:     rgb(55, 55, 62);
+      --text-muted:    rgb(110, 110, 118);
+      --text-faint:    rgb(160, 158, 162);
+
+      /* Rules */
+      --rule:          rgb(0 0 0 / 0.09);
+      --rule-navy:     rgb(55, 69, 150, 0.25);
+
+      /* Type */
+      --font-display:  'Cormorant Garamond', Georgia, serif;
+      --font-body:     'Inter', system-ui, sans-serif;
+
+      /* Layout */
+      --page-max:      1240px;
+      --gutter:        clamp(1.5rem, 5vw, 4.5rem);
+      --radius:        4px;
+      --radius-lg:     8px;
+    }
+
+    /* ── RESET ────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--text-body);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img  { display: block; max-width: 100%; }
+    a    { color: inherit; text-decoration: none; }
+    ul   { list-style: none; }
+
+    /* ── NAV ──────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--gutter);
+      height: 72px;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.35s, border-color 0.35s;
+    }
+    .nav.scrolled {
+      background: var(--cream);
+      border-bottom-color: var(--rule);
+    }
+    .nav-logo img {
+      height: 96px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
+      transition: filter 0.35s;
+    }
+    .nav.scrolled .nav-logo img {
+      filter: none;
+    }
+        .nav-center { display: flex; align-items: center; }
+    .nav-item { position: relative; }
+    .nav-label {
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-body); font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      padding: 0 1.1rem; height: 72px;
+      display: flex; align-items: center;
+      transition: color 0.2s;
+    }
+    .nav-label:hover { color: #fff; }
+    .nav.scrolled .nav-label { color: var(--text-muted); }
+    .nav.scrolled .nav-label:hover { color: var(--ink); }
+    .nav-dropdown {
+      position: absolute; top: 100%; left: 0; z-index: 300;
+      min-width: 192px;
+      background: var(--cream);
+      border-top: 2px solid var(--navy);
+      padding: 0.9rem 0 1rem;
+      opacity: 0; visibility: hidden; transform: translateY(-6px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+      box-shadow: 0 16px 48px rgb(0 0 0 / 0.10);
+    }
+    .nav-item.is-open .nav-dropdown {
+      opacity: 1; visibility: visible; transform: translateY(0);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0s;
+    }
+    .nav-dropdown a {
+      display: block; padding: 0.5rem 1.5rem;
+      font-size: 0.82rem; font-weight: 300; color: var(--text-body);
+      transition: color 0.15s; letter-spacing: 0.02em;
+    }
+    .nav-dropdown a:hover { color: var(--navy); }
+    .nav-dd-heading {
+      display: block; padding: 0.1rem 1.5rem 0.4rem;
+      font-size: 0.55rem; font-weight: 600; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--text-faint);
+    }
+    .nav-dd-rule { height: 1px; background: var(--rule); margin: 0.4rem 1.5rem 0.5rem; }
+    .nav-drawer-section { margin-bottom: 2rem; }
+    .nav-drawer-heading {
+      display: block; font-size: 0.58rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--text-faint); margin-bottom: 0.75rem;
+    }
+    .nav-drawer-section a {
+      display: block; font-size: 1rem; font-family: var(--font-display);
+      font-weight: 400; color: var(--text-headline); letter-spacing: 0.04em;
+      padding: 0.25rem 0; transition: color 0.2s;
+    }
+    .nav-drawer-section a:hover { color: var(--navy); }
+
+    .nav-links a {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.88);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav.scrolled .nav-links a {
+      color: var(--text-muted);
+    }
+    .nav.scrolled .nav-links a:hover {
+      color: var(--navy);
+    }
+    .nav-cta {
+      font-size: 0.72rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.16em !important;
+      color: var(--navy) !important;
+      background: var(--white);
+      border: 1.5px solid var(--white);
+      padding: 0.5rem 1.4rem;
+      border-radius: var(--radius);
+      transition: background 0.2s, color 0.2s, border-color 0.2s !important;
+    }
+    .nav-cta:hover {
+      background: var(--navy-pale) !important;
+      border-color: var(--navy-pale) !important;
+      color: var(--navy-dark) !important;
+    }
+    .nav.scrolled .nav-cta {
+      background: var(--navy) !important;
+      border-color: var(--navy) !important;
+      color: var(--white) !important;
+    }
+    .nav.scrolled .nav-cta:hover {
+      background: var(--navy-dark) !important;
+      border-color: var(--navy-dark) !important;
+    }
+    .nav-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--white);
+      padding: 4px;
+      flex-direction: column;
+      gap: 5px;
+      transition: color 0.35s;
+    }
+    .nav.scrolled .nav-menu-btn { color: var(--text-headline); }
+    .nav-menu-btn span {
+      display: block;
+      width: 22px; height: 1.5px;
+      background: currentColor;
+      border-radius: 1px;
+      transition: width 0.2s;
+    }
+    .nav-menu-btn span:nth-child(2) { width: 16px; }
+
+    /* Mobile drawer */
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: 280px;
+      background: var(--cream);
+      border-left: 1px solid var(--rule);
+      z-index: 300;
+      padding: 5rem var(--gutter) 3rem;
+      flex-direction: column;
+      gap: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s ease;
+    }
+    .nav-drawer.open { display: flex; transform: translateX(0); }
+    .nav-drawer a {
+      font-size: 1.1rem;
+      font-family: var(--font-display);
+      font-weight: 400;
+      color: var(--text-headline);
+      letter-spacing: 0.05em;
+    }
+    .nav-drawer a:hover { color: var(--navy); }
+    .nav-drawer-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: none; border: none;
+      cursor: pointer; color: var(--text-muted);
+      font-size: 1.4rem; line-height: 1;
+    }
+    .nav-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgb(0 0 0 / 0.3);
+      z-index: 250;
+    }
+    .nav-overlay.open { display: block; }
+
+    /* ── HERO ─────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 600px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hero-video-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    /* Layered gradient overlay — navy tint at bottom, dark at top-left for text */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to bottom,
+          rgb(0 0 0 / 0.45) 0%,
+          rgb(0 0 0 / 0.15) 40%,
+          rgb(55 69 150 / 0.55) 100%
+        );
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 0 var(--gutter) clamp(3.5rem, 7vw, 5.5rem);
+      max-width: var(--page-max);
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 2rem; height: 1px;
+      background: rgba(255,255,255,0.55);
+      flex-shrink: 0;
+    }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6.5vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.04;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      max-width: 14ch;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--navy-pale);
+    }
+    .hero-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.78);
+      max-width: 44ch;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      right: var(--gutter);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      z-index: 2;
+      writing-mode: vertical-rl;
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 2rem;
+      background: rgba(255,255,255,0.35);
+      animation: scroll-grow 2s ease-in-out infinite;
+    }
+    @keyframes scroll-grow {
+      0%, 100% { height: 1.5rem; opacity: 0.35; }
+      50%       { height: 2.5rem; opacity: 0.7; }
+    }
+
+    /* ── BUTTONS ──────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.9rem 2.2rem;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: 1.5px solid var(--navy);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+    .btn-primary:hover {
+      background: var(--navy-dark);
+      border-color: var(--navy-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgb(55 69 150 / 0.28);
+    }
+    .btn-primary-white {
+      background: var(--white);
+      color: var(--navy);
+      border-color: var(--white);
+    }
+    .btn-primary-white:hover {
+      background: var(--navy-pale);
+      border-color: var(--navy-pale);
+      color: var(--navy-dark);
+      box-shadow: 0 8px 24px rgb(0 0 0 / 0.15);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.9rem 2.2rem;
+      background: transparent;
+      color: var(--white);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: 1.5px solid rgba(255,255,255,0.45);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-secondary:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.08);
+    }
+    .btn-secondary-dark {
+      color: var(--navy);
+      border-color: rgb(55 69 150 / 0.3);
+    }
+    .btn-secondary-dark:hover {
+      border-color: var(--navy);
+      background: var(--navy-pale);
+      color: var(--navy-dark);
+    }
+    .btn-sm {
+      padding: 0.5rem 1.2rem;
+      font-size: 0.62rem;
+    }
+
+    /* ── TRUST STRIP ──────────────────────────────── */
+    .trust-strip {
+      background: var(--navy);
+      padding: 0.95rem 0;
+      overflow: hidden;
+    }
+    .trust-strip-inner {
+      display: flex;
+      gap: 3.5rem;
+      white-space: nowrap;
+      animation: marquee 32s linear infinite;
+      width: max-content;
+    }
+    .trust-strip:hover .trust-strip-inner {
+      animation-play-state: paused;
+    }
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .trust-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      flex-shrink: 0;
+    }
+    .trust-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      flex-shrink: 0;
+    }
+
+    /* ── SECTION BASE ─────────────────────────────── */
+    .section {
+      padding: clamp(5rem, 9vw, 8.5rem) var(--gutter);
+    }
+    .section-inner {
+      max-width: var(--page-max);
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 1.25rem; height: 1.5px;
+      background: var(--navy);
+      flex-shrink: 0;
+    }
+    .section-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5.5vw, 5rem);
+      font-weight: 300;
+      line-height: 1.06;
+      color: var(--text-headline);
+      margin-bottom: 0.75rem;
+    }
+    .section-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      max-width: 52ch;
+      line-height: 1.8;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── COLLECTION GRID ──────────────────────────── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(2rem, 3.5vw, 3.5rem);
+    }
+    .product-card {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      overflow: visible;
+      transition: none;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .product-card:hover { transform: none; box-shadow: none; }
+    .product-media {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: var(--cream-deep);
+      position: relative;
+      flex-shrink: 0;
+      border-radius: var(--radius);
+    }
+    .product-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .product-card:hover .product-media img {
+      transform: scale(1.05);
+    }
+    .product-badge {
+      position: absolute;
+      top: 0.8rem; left: 0.8rem;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 0.56rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.65rem;
+      border-radius: 2px;
+    }
+    .product-body {
+      padding: 1.1rem 0 0;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .product-collection-label {
+      font-size: 0.57rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 0.3rem;
+    }
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--text-headline);
+      margin-bottom: 0.4rem;
+    }
+    .product-desc {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 1rem;
+    }
+    .product-footer {
+      display: flex;
+      align-items: center;
+      border-top: none;
+      padding-top: 0;
+    }
+    .product-price {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-body);
+    }
+    .product-price-note {
+      font-size: 0.6rem;
+      color: var(--text-faint);
+      margin-top: 0.1rem;
+    }
+
+    /* ── CRAFT SECTION ────────────────────────────── */
+    .craft-section {
+      background: rgb(24, 32, 80);
+    }
+    .craft-section .eyebrow {
+      color: rgba(255,255,255,0.65);
+    }
+    .craft-section .eyebrow::before { background: rgba(255,255,255,0.4); }
+    .craft-section .section-h2 { color: var(--white); }
+    .craft-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: center;
+    }
+    .craft-frame {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      background: #b8d4d0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .craft-frame-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      padding: 0;
+      transform: none;
+      transition: transform 0.6s ease;
+    }
+    .craft-frame:hover .craft-frame-img { transform: scale(1.03); }
+    .craft-frame-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 30%;
+      background: linear-gradient(to top, rgb(24, 32, 80) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .craft-text p {
+      font-size: 0.975rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+      max-width: 48ch;
+    }
+    .craft-text p + p { margin-top: 1rem; }
+    .craft-facts {
+      margin-top: 2.5rem;
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.06em;
+      line-height: 2;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 2rem;
+    }
+    .craft-facts span {
+      display: inline-block;
+      margin-right: 2rem;
+      white-space: nowrap;
+    }
+    .craft-facts span strong {
+      font-weight: 600;
+      color: rgba(255,255,255,0.72);
+      font-family: var(--font-display);
+      font-size: 1rem;
+    }
+
+    /* ── EDITORIAL BREAK ────────────────────────────── */
+    .editorial-break {
+      position: relative;
+      width: 100%;
+      height: 62svh;
+      min-height: 380px;
+      max-height: 720px;
+      overflow: hidden;
+    }
+    .editorial-break img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+    }
+    .editorial-break-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 3rem var(--gutter) 2rem;
+      display: flex; justify-content: space-between; align-items: flex-end;
+      background: linear-gradient(to top, rgba(0,0,0,0.42) 0%, transparent 100%);
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(255,255,255,0.72);
+    }
+
+    /* ── WHY SECTION ──────────────────────────────── */
+    .why-section { background: var(--cream-deep); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .why-item {
+      padding: 3rem 2.5rem;
+      border-right: 1px solid var(--rule);
+    }
+    .why-item:last-child { border-right: none; }
+    .why-icon {
+      width: 2.25rem; height: 2.25rem;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+    .why-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--text-headline);
+      margin-bottom: 0.6rem;
+    }
+    .why-desc {
+      font-size: 0.875rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── REVIEWS ──────────────────────────────────── */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .review-card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+    }
+    .review-stars {
+      font-size: 0.8rem;
+      color: var(--navy);
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    .review-text {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--text-headline);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+    .review-author {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      border-top: 1px solid var(--rule);
+      padding-top: 1rem;
+    }
+    .review-name {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-headline);
+    }
+    .review-location {
+      font-size: 0.62rem;
+      color: var(--text-faint);
+      letter-spacing: 0.10em;
+    }
+
+    /* ── CTA BANNER ───────────────────────────────── */
+    .cta-banner-section { background: var(--cream-deep); }
+    .cta-banner {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      min-height: 420px;
+    }
+    .cta-banner-text {
+      padding: clamp(3rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .cta-banner-media {
+      position: relative;
+      background: #e8dfd8;
+      overflow: hidden;
+    }
+    .cta-banner-media img {
+      position: absolute; inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      padding: 0;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .cta-banner:hover .cta-banner-media img {
+      transform: scale(1.04);
+    }
+    .cta-eyebrow {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .cta-eyebrow::before {
+      content: '';
+      display: block;
+      width: 1.25rem; height: 1.5px;
+      background: var(--navy);
+      flex-shrink: 0;
+    }
+    .cta-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 300;
+      color: var(--text-headline);
+      margin-bottom: 1rem;
+      line-height: 1.08;
+    }
+    .cta-sub {
+      font-size: 0.975rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      max-width: 38ch;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+    .cta-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 860px) {
+      .cta-banner { grid-template-columns: 1fr; }
+      .cta-banner-media { aspect-ratio: 4 / 3; }
+    }
+
+    /* ── CONTACT ──────────────────────────────────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: clamp(3rem, 7vw, 7rem);
+      align-items: start;
+    }
+    .contact-detail-label {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+    .contact-detail-value {
+      font-size: 0.975rem;
+      color: var(--text-headline);
+    }
+    .contact-detail-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+    .contact-details { display: flex; flex-direction: column; gap: 2rem; margin-top: 2.5rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-label {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .form-input, .form-textarea {
+      background: var(--white);
+      border: 1.5px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 0.82rem 1rem;
+      color: var(--text-headline);
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-faint); }
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--navy);
+    }
+    .form-textarea { resize: vertical; min-height: 130px; }
+
+    /* ── FOOTER ───────────────────────────────────── */
+    footer {
+      background: var(--text-headline);
+    }
+    .footer-main {
+      max-width: var(--page-max);
+      margin: 0 auto;
+      padding: 4rem var(--gutter) 2.5rem;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgb(255 255 255 / 0.10);
+      margin-bottom: 1.75rem;
+    }
+    .footer-logo img {
+      height: 62px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      margin-bottom: 0.85rem;
+    }
+    .footer-brand-desc {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.65;
+      max-width: 26ch;
+    }
+    .footer-col-heading {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1rem;
+    }
+    .footer-col-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .footer-col-links a {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      transition: color 0.2s;
+    }
+    .footer-col-links a:hover { color: var(--white); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-legal {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.28);
+      letter-spacing: 0.06em;
+    }
+    .footer-social {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-social a {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      transition: color 0.2s;
+    }
+    .footer-social a:hover { color: var(--white); }
+
+    /* ── REVEAL ANIMATIONS ────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.10s; }
+    .reveal-delay-2 { transition-delay: 0.20s; }
+    .reveal-delay-3 { transition-delay: 0.30s; }
+
+    /* ── RESPONSIVE ───────────────────────────────── */
+    @media (max-width: 1024px) {
+      .product-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top   { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 860px) {
+      .craft-grid { grid-template-columns: 1fr; }
+      .craft-frame { aspect-ratio: 3 / 2; order: -1; }
+      .why-grid { grid-template-columns: 1fr; }
+      .why-item { border-right: none; border-bottom: 1px solid var(--rule); }
+      .why-item:last-child { border-bottom: none; }
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .nav-menu-btn { display: flex; }
+    }
+    @media (max-width: 600px) {
+      .product-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .trust-strip-inner { justify-content: flex-start; gap: 1.25rem; }
+    }
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+    <nav class="nav" id="main-nav">
+    <a href="index.html" class="nav-logo">
+      <img src="https://www.rollingtime.co.za/cdn/shop/files/SmartProp_Social_Media_Posts_-5-removebg-preview_copy.png?height=200&v=1768479644" alt="Rolling Time">
+    </a>
+    <div class="nav-center">
+      <div class="nav-item">
+        <button class="nav-label" aria-haspopup="true">Shop</button>
+        <div class="nav-dropdown">
+          <span class="nav-dd-heading">Collection Y1</span>
+          <a href="collection.html">All Pieces</a>
+          <div class="nav-dd-rule"></div>
+          <a href="product-atlantic-breeze.html">Atlantic Breeze</a>
+          <a href="product-ember.html">Ember</a>
+          <a href="product-golden-hour.html">Golden Hour</a>
+          <a href="product-mahogany-mist.html">Mahogany Mist</a>
+          <a href="product-midnight-ritual.html">Midnight Ritual</a>
+          <a href="product-minted-moment.html">Minted Moment</a>
+          <a href="product-pure-grain.html">Pure Grain</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-label" aria-haspopup="true">Info</button>
+        <div class="nav-dropdown">
+          <a href="story.html">Our Story</a>
+          <a href="wholesale.html">Wholesale</a>
+          <a href="contact.html">Contact</a>
+          <div class="nav-dd-rule"></div>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms</a>
+          <a href="returns.html">Returns</a>
+          <a href="shipping.html">Shipping</a>
+        </div>
+      </div>
+    </div>
+    <button class="nav-menu-btn" id="menu-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <button class="nav-drawer-close" id="drawer-close">&times;</button>
+    <div class="nav-drawer-section">
+      <span class="nav-drawer-heading">Shop</span>
+      <a href="collection.html">All Pieces</a>
+      <a href="product-atlantic-breeze.html">Atlantic Breeze</a>
+      <a href="product-ember.html">Ember</a>
+      <a href="product-golden-hour.html">Golden Hour</a>
+      <a href="product-mahogany-mist.html">Mahogany Mist</a>
+      <a href="product-midnight-ritual.html">Midnight Ritual</a>
+      <a href="product-minted-moment.html">Minted Moment</a>
+      <a href="product-pure-grain.html">Pure Grain</a>
+    </div>
+    <div class="nav-drawer-section">
+      <span class="nav-drawer-heading">Info</span>
+      <a href="story.html">Our Story</a>
+      <a href="wholesale.html">Wholesale</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="returns.html">Returns</a>
+      <a href="shipping.html">Shipping</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="hero-video-wrap">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      >
+        <source
+          src="https://www.rollingtime.co.za/cdn/shop/videos/c/vp/9fe416a6403848ad861c99def1e456b6/9fe416a6403848ad861c99def1e456b6.SD-480p-1.0Mbps-67038408.mp4?v=0"
+          type="video/mp4"
+        >
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Cape Town, South Africa</p>
+      <h1 class="hero-headline">Made by hand.<br><em>Built for the ritual.</em></h1>
+      <p class="hero-sub">Premium wooden rolling trays and smoke accessories, hand-finished in our Cape Town workshop. Sustainable materials. Intentional design. Collection Y1 is live now.</p>
+      <div class="hero-actions">
+        <a href="collection.html" class="btn-primary btn-primary-white">
+          Shop Collection Y1
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#craft" class="btn-secondary">Our Story</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span class="hero-scroll-line"></span>
+      Scroll
+    </div>
+  </div>
+
+  <!-- ── TRUST STRIP ── -->
+  <div class="trust-strip">
+    <div class="trust-strip-inner">
+      <span class="trust-item"><span class="trust-dot"></span>Handcrafted in Cape Town</span>
+      <span class="trust-item"><span class="trust-dot"></span>Sustainable Materials</span>
+      <span class="trust-item"><span class="trust-dot"></span>Limited Runs Only</span>
+      <span class="trust-item"><span class="trust-dot"></span>Hand-Finished</span>
+      <span class="trust-item"><span class="trust-dot"></span>Collection Y1 Live Now</span>
+      <span class="trust-item"><span class="trust-dot"></span>Cape Town, South Africa</span>
+      <span class="trust-item"><span class="trust-dot"></span>Eight Pieces Only</span>
+      <!-- duplicate set for seamless loop -->
+      <span class="trust-item"><span class="trust-dot"></span>Handcrafted in Cape Town</span>
+      <span class="trust-item"><span class="trust-dot"></span>Sustainable Materials</span>
+      <span class="trust-item"><span class="trust-dot"></span>Limited Runs Only</span>
+      <span class="trust-item"><span class="trust-dot"></span>Hand-Finished</span>
+      <span class="trust-item"><span class="trust-dot"></span>Collection Y1 Live Now</span>
+      <span class="trust-item"><span class="trust-dot"></span>Cape Town, South Africa</span>
+      <span class="trust-item"><span class="trust-dot"></span>Eight Pieces Only</span>
+    </div>
+  </div>
+
+  <!-- ── COLLECTION ── -->
+  <div class="section" id="collection">
+    <div class="section-inner">
+      <p class="eyebrow reveal">Collection Y1</p>
+      <h2 class="section-h2 reveal reveal-delay-1">The first collection.</h2>
+      <p class="section-sub reveal reveal-delay-2">Eight pieces. All hand-finished. Each one made to sit on your counter, not disappear into a drawer.</p>
+      <div class="product-grid">
+
+        <a href="product-atlantic-breeze.html" class="product-card reveal">
+          <div class="product-media">
+            <img
+              src="https://www.rollingtime.co.za/cdn/shop/files/consumables-collection-y1-001-2-atlantic-breeze-2844553.png?v=1772616432&width=800"
+              alt="Atlantic Breeze rolling tray"
+              loading="lazy"
+            >
+            <span class="product-badge">Y1</span>
+          </div>
+          <div class="product-body">
+            <p class="product-collection-label">Collection Y1</p>
+            <h3 class="product-name">Atlantic Breeze</h3>
+            <p class="product-desc">Hand-finished pale birch with a satin seal. A clean surface, wide lip, and rolling groove cut to exactly the right depth.</p>
+            <div class="product-footer">
+              <div class="product-price">View piece &rarr;</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="product-ember.html" class="product-card reveal reveal-delay-1">
+          <div class="product-media">
+            <img
+              src="https://www.rollingtime.co.za/cdn/shop/files/consumables-collection-y1-001-2-ember-9048381.png?v=1772616433&width=800"
+              alt="Ember rolling tray"
+              loading="lazy"
+            >
+            <span class="product-badge">Y1</span>
+          </div>
+          <div class="product-body">
+            <p class="product-collection-label">Collection Y1</p>
+            <h3 class="product-name">Ember</h3>
+            <p class="product-desc">Warm-toned wood with a deep amber stain and matte oil finish. Weighted, rich, and built to age with character.</p>
+            <div class="product-footer">
+              <div class="product-price">View piece &rarr;</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="product-midnight-ritual.html" class="product-card reveal reveal-delay-2">
+          <div class="product-media">
+            <img
+              src="https://www.rollingtime.co.za/cdn/shop/files/consumables-collection-y1-001-2-midnight-ritual-6394136.png?width=800"
+              alt="Midnight Ritual rolling tray"
+              loading="lazy"
+            >
+            <span class="product-badge">Y1</span>
+          </div>
+          <div class="product-body">
+            <p class="product-collection-label">Collection Y1</p>
+            <h3 class="product-name">Midnight Ritual</h3>
+            <p class="product-desc">Deep-stained dark finish with a smooth satin seal. The moodiest piece in Y1. Built for the evening ritual.</p>
+            <div class="product-footer">
+              <div class="product-price">View piece &rarr;</div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+      <div style="margin-top: 2.5rem; text-align: center;">
+        <a href="collection.html" class="btn-secondary-dark btn-secondary">
+          View Full Collection
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── EDITORIAL BREAK ── -->
+  <div class="editorial-break">
+    <img src="img/blue-tray-marble.png" alt="Rolling Time — handcrafted in Cape Town" loading="lazy">
+    <div class="editorial-break-caption">
+      <span>Collection Y1</span>
+      <span>Cape Town, South Africa</span>
+    </div>
+  </div>
+
+  <!-- ── WHY ── -->
+  <div class="why-section">
+    <div style="max-width: var(--page-max); margin: 0 auto;">
+      <div class="why-grid">
+        <div class="why-item reveal">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="15" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M11 18 C11 13 18 10 18 10 C18 10 25 13 25 18 C25 23 18 26 18 26 C18 26 11 23 11 18Z" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+          <h3 class="why-title">Handcrafted in Cape Town</h3>
+          <p class="why-desc">Shaped, sanded, and oiled in our workshop by a small team who care about what they make. No outsourcing. No batch production.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-1">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none">
+            <path d="M18 5 L18 31M8 15 L18 5 L28 15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 24 Q13 19 18 22 Q23 25 27 20" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+          </svg>
+          <h3 class="why-title">Sustainable Materials</h3>
+          <p class="why-desc">Local wood where possible, natural oils for the finish, and no synthetic coatings that wear off after six months.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-2">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none">
+            <rect x="7" y="13" width="22" height="14" rx="2" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M13 13 V10 C13 8.3 15 7 18 7 C21 7 23 8.3 23 10 V13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="18" cy="20" r="2" fill="currentColor" opacity="0.55"/>
+          </svg>
+          <h3 class="why-title">Limited Runs Only</h3>
+          <p class="why-desc">Collection Y1 will not be restocked. That is not a marketing tactic. It is how we stay small enough to do this properly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CRAFT ── -->
+  <div class="section craft-section" id="craft">
+    <div class="section-inner">
+      <div class="craft-grid">
+        <div class="craft-frame reveal">
+          <img
+            class="craft-frame-img"
+            src="img/collection-fan.png"
+            alt="Rolling Time Collection Y1 — full range"
+            loading="lazy"
+          >
+          <div class="craft-frame-overlay"></div>
+        </div>
+        <div class="craft-text">
+          <p class="eyebrow reveal">The Workshop</p>
+          <h2 class="section-h2 reveal reveal-delay-1">Built in Cape Town.<br>Finished by hand.</h2>
+          <div class="reveal reveal-delay-2">
+            <p>Every tray leaves our workshop with two things: a surface worth setting on your counter, and a finish that will outlast the trend. We source sustainably, shape locally, and oil by hand.</p>
+            <p>Collection Y1 is the first run. Eight pieces, each finished slightly differently. When they are gone, they are gone. There is no restock planned.</p>
+          </div>
+          <p class="craft-facts reveal reveal-delay-2">
+            <span><strong>Collection Y1</strong></span>
+            <span><strong>Eight pieces</strong></span>
+            <span><strong>Cape Town</strong></span>
+            <span><strong>Hand finished</strong></span>
+          </p>
+          <div style="margin-top: 2rem;" class="reveal reveal-delay-2">
+            <a href="#contact" class="btn-secondary" style="border-color: rgba(255,255,255,0.35);">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── REVIEWS ── -->
+  <div class="section">
+    <div class="section-inner">
+      <p class="eyebrow reveal">What people say</p>
+      <h2 class="section-h2 reveal reveal-delay-1">From the community.</h2>
+      <p class="section-sub reveal reveal-delay-2">Cape Town and beyond.</p>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"Finally a tray that does not feel like an afterthought. The finish is incredible and the weight is exactly right."</p>
+          <div class="review-author">
+            <span class="review-name">Jordan K.</span>
+            <span class="review-location">Cape Town, SA</span>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"Looks like a piece of furniture. It lives on my coffee table and people always ask about it."</p>
+          <div class="review-author">
+            <span class="review-name">Aisha M.</span>
+            <span class="review-location">Johannesburg, SA</span>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"The rolling groove is perfectly proportioned. Functional design, beautiful object. Already ordered a second one."</p>
+          <div class="review-author">
+            <span class="review-name">Luca V.</span>
+            <span class="review-location">Cape Town, SA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CTA BANNER ── -->
+  <div class="section cta-banner-section">
+    <div class="section-inner">
+      <div class="cta-banner reveal">
+        <div class="cta-banner-text">
+          <p class="cta-eyebrow">Collection Y1</p>
+          <h2 class="cta-headline">Eight pieces.<br>Live now.</h2>
+          <p class="cta-sub">Hand-finished in Cape Town. When they sell out, that is it. No restock planned.</p>
+          <div class="cta-actions">
+            <a href="collection.html" class="btn-primary">
+              Shop Collection Y1
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#contact" class="btn-secondary btn-secondary-dark">Get in Touch</a>
+          </div>
+        </div>
+        <div class="cta-banner-media">
+          <img
+            src="img/floating-trays-pastel.jpg"
+            alt="Rolling Time Collection Y1"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CONTACT ── -->
+  <div class="section" id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div>
+          <p class="eyebrow reveal">Get in touch</p>
+          <h2 class="section-h2 reveal reveal-delay-1">Questions?<br>We answer them.</h2>
+          <p class="section-sub reveal reveal-delay-2" style="margin-bottom: 0;">Ask about a specific piece, shipping to your city, or custom work. We reply within 24 hours.</p>
+          <div class="contact-details reveal reveal-delay-2">
+            <div>
+              <p class="contact-detail-label">Location</p>
+              <p class="contact-detail-value">Cape Town, South Africa</p>
+            </div>
+            <div>
+              <p class="contact-detail-label">Online Store</p>
+              <p class="contact-detail-value">
+                <a href="collection.html" style="color: var(--navy); transition: opacity 0.2s;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">View Collection</a>
+              </p>
+            </div>
+            <div>
+              <p class="contact-detail-label">Currency</p>
+              <p class="contact-detail-value">South African Rand (ZAR)</p>
+              <p class="contact-detail-sub">International orders welcome.</p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <form class="contact-form" id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="f-name">Name</label>
+                <input class="form-input" type="text" id="f-name" name="name" placeholder="Your name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="f-email">Email</label>
+                <input class="form-input" type="email" id="f-email" name="email" placeholder="your@email.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-subject">Subject</label>
+              <input class="form-input" type="text" id="f-subject" name="subject" placeholder="Which piece are you asking about?">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-message">Message</label>
+              <textarea class="form-textarea" id="f-message" name="message" placeholder="Ask about a piece, shipping, custom orders..." required></textarea>
+            </div>
+            <button type="submit" id="form-submit" class="btn-primary" style="align-self: flex-start;">
+              Send Message
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-main">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">
+            <img
+              src="https://www.rollingtime.co.za/cdn/shop/files/SmartProp_Social_Media_Posts_-5-removebg-preview_copy.png?height=200&v=1768479644"
+              alt="Rolling Time"
+            >
+          </div>
+          <p class="footer-brand-desc">Handcrafted wooden rolling trays and smoke accessories. Made in Cape Town, South Africa.</p>
+        </div>
+        <div>
+          <p class="footer-col-heading">Shop</p>
+          <div class="footer-col-links">
+            <a href="collection.html">Collection Y1</a>
+            <a href="collection.html">Rolling Trays</a>
+            <a href="collection.html">Accessories</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-col-heading">Company</p>
+          <div class="footer-col-links">
+            <a href="#craft">Our Story</a>
+            <a href="#collection">Collection</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-col-heading">Follow</p>
+          <div class="footer-col-links">
+            <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-col-heading">Legal</p>
+          <div class="footer-col-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+            <a href="returns.html">Returns &amp; Refunds</a>
+            <a href="shipping.html">Shipping Policy</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-legal">&#169; 2026 Rolling Time. Cape Town, South Africa. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="collection.html">Collection</a>
+          <a href="#contact">Contact</a>
+          <a href="#collection">Collection</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll state
+    const nav = document.getElementById('main-nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Dropdowns
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.querySelector('.nav-label').addEventListener('click', e => {
+        e.stopPropagation();
+        const open = item.classList.contains('is-open');
+        document.querySelectorAll('.nav-item.is-open').forEach(i => i.classList.remove('is-open'));
+        if (!open) item.classList.add('is-open');
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.nav-item.is-open').forEach(i => i.classList.remove('is-open'));
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') document.querySelectorAll('.nav-item.is-open').forEach(i => i.classList.remove('is-open'));
+    });
+
+    // Mobile drawer
+    const menuBtn    = document.getElementById('menu-btn');
+    const drawer     = document.getElementById('nav-drawer');
+    const overlay    = document.getElementById('nav-overlay');
+    const closeBtn   = document.getElementById('drawer-close');
+    const openDrawer  = () => { drawer.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; };
+    const closeDrawer = () => { drawer.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = ''; };
+    menuBtn.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.10, rootMargin: '0px 0px -28px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Contact form
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('form-submit');
+      btn.style.background = 'rgb(30 130 80)';
+      btn.style.borderColor = 'rgb(30 130 80)';
+      btn.innerHTML = 'Message Sent &#10003;';
+      setTimeout(() => {
+        btn.style.background = '';
+        btn.style.borderColor = '';
+        btn.innerHTML = 'Send Message <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        this.reset();
+      }, 3500);
+    });
+  </script>
+  <script src="js/chatbot.js" defer></script>
+<script src="js/tracker.js"></script>
+  <script src="js/popup.js"></script>
+</body>
+</html>
