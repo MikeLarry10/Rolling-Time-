@@ -1,0 +1,1200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rolling Time - Growth Marketing Playbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: rgb(55,69,150);
+      --navy-dark: rgb(35,46,110);
+      --navy-pale: rgb(230,233,248);
+      --cream: rgb(237,234,231);
+      --cream-deep: rgb(224,220,216);
+      --white: #ffffff;
+      --green: rgb(22,120,60);
+      --green-pale: rgb(220,245,230);
+      --amber: rgb(180,100,20);
+      --amber-pale: rgb(255,243,220);
+      --text-headline: rgb(18,18,22);
+      --text-body: rgb(55,55,62);
+      --text-muted: rgb(110,110,118);
+      --rule: rgb(0 0 0 / 0.09);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 15px; }
+    body {
+      background: var(--cream);
+      color: var(--text-body);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* PRINT BUTTON */
+    .print-bar { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; }
+    .print-btn {
+      background: var(--navy); color: #fff; border: none; cursor: pointer;
+      font-family: var(--font-body); font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 0.85rem 1.75rem; border-radius: 4px;
+      box-shadow: 0 4px 20px rgb(55 69 150 / 0.35); transition: background 0.2s;
+    }
+    .print-btn:hover { background: var(--navy-dark); }
+
+    /* COVER */
+    .cover {
+      background: var(--navy); min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 6rem 6rem 5rem; position: relative; overflow: hidden;
+      page-break-after: always;
+    }
+    .cover::before {
+      content: ''; position: absolute; top: -30%; right: -20%;
+      width: 70vw; height: 70vw; max-width: 700px; max-height: 700px;
+      border-radius: 50%; background: rgba(255,255,255,0.03);
+    }
+    .cover::after {
+      content: ''; position: absolute; bottom: -20%; left: -15%;
+      width: 50vw; height: 50vw; max-width: 500px; max-height: 500px;
+      border-radius: 50%; background: rgba(255,255,255,0.02);
+    }
+    .cover-logo { margin-bottom: 4rem; }
+    .cover-logo img { height: 52px; filter: brightness(0) invert(1); opacity: 0.7; }
+    .cover-label {
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(237,234,231,0.35);
+      margin-bottom: 1rem;
+    }
+    .cover h1 {
+      font-family: var(--font-display); font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 300; color: var(--cream); line-height: 1.04;
+      margin-bottom: 3rem; letter-spacing: -0.01em;
+    }
+    .cover-meta { display: flex; gap: 3rem; flex-wrap: wrap; }
+    .cover-meta-label {
+      font-size: 0.58rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(237,234,231,0.28); margin-bottom: 0.3rem;
+    }
+    .cover-meta-value { font-size: 0.82rem; color: rgba(237,234,231,0.65); }
+
+    /* PAGE */
+    .page { max-width: 860px; margin: 0 auto; padding: 5rem 3rem; }
+
+    /* SECTION INTRO */
+    .section-intro { margin-bottom: 2rem; margin-top: 3.5rem; }
+    .section-intro:first-child { margin-top: 0; }
+    .eyebrow {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--navy); margin-bottom: 0.6rem;
+    }
+    .section-intro h2 {
+      font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300; color: var(--text-headline); line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+    .section-intro p { color: var(--text-muted); max-width: 60ch; }
+
+    /* CALLOUT BOX */
+    .callout {
+      background: var(--navy); color: var(--cream);
+      border-radius: 6px; padding: 2rem 2.5rem; margin: 1.5rem 0;
+    }
+    .callout-label {
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(237,234,231,0.35); margin-bottom: 0.5rem;
+    }
+    .callout h3 {
+      font-family: var(--font-display); font-size: 1.8rem; font-weight: 300;
+      color: var(--cream); margin-bottom: 1rem; line-height: 1.1;
+    }
+    .callout p { color: rgba(237,234,231,0.75); margin-bottom: 0.5rem; font-size: 0.9rem; }
+    .callout ul { margin-left: 1.25rem; }
+    .callout ul li { color: rgba(237,234,231,0.75); font-size: 0.9rem; margin-bottom: 0.4rem; }
+    .callout strong { color: var(--cream); }
+
+    /* VALUE EQUATION */
+    .value-eq {
+      display: grid; grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 0; align-items: center; background: var(--white);
+      border-radius: 6px; padding: 2rem; margin: 1.5rem 0;
+      border: 1px solid var(--rule);
+    }
+    .ve-factor { text-align: center; padding: 0 1rem; }
+    .ve-label {
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem;
+    }
+    .ve-name { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; color: var(--text-headline); }
+    .ve-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.3rem; line-height: 1.4; }
+    .ve-op {
+      font-size: 1.5rem; color: var(--text-muted); padding: 0 0.5rem;
+      text-align: center;
+    }
+    .ve-factor.up .ve-name { color: var(--green); }
+    .ve-factor.down .ve-name { color: var(--amber); }
+
+    /* OFFER STACK */
+    .offer-stack { margin: 1.5rem 0; }
+    .offer-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.1rem 1.25rem; background: var(--white);
+      border: 1px solid var(--rule); margin-bottom: -1px;
+    }
+    .offer-item:first-child { border-radius: 6px 6px 0 0; }
+    .offer-item:last-child { border-radius: 0 0 6px 6px; }
+    .offer-tick {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--green-pale); color: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 700; flex-shrink: 0; margin-top: 0.1rem;
+    }
+    .offer-item-title { font-size: 0.88rem; font-weight: 600; color: var(--text-headline); }
+    .offer-item-desc { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.15rem; }
+
+    /* GUARANTEE BOX */
+    .guarantee-box {
+      border: 2px solid var(--green); border-radius: 6px;
+      padding: 1.75rem 2rem; margin: 1.5rem 0; background: var(--green-pale);
+    }
+    .guarantee-box h3 {
+      font-family: var(--font-display); font-size: 1.5rem; font-weight: 400;
+      color: var(--green); margin-bottom: 0.5rem;
+    }
+    .guarantee-box p { font-size: 0.88rem; color: var(--text-body); }
+
+    /* EMAIL SEQUENCE */
+    .email-seq { margin: 1.5rem 0; }
+    .email-step {
+      display: grid; grid-template-columns: 60px 1fr;
+      gap: 0; margin-bottom: 0;
+    }
+    .email-step-left {
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .email-dot {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--navy); color: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
+    }
+    .email-line { width: 2px; background: var(--rule); flex: 1; margin: 4px 0; min-height: 20px; }
+    .email-step:last-child .email-line { display: none; }
+    .email-body {
+      background: var(--white); border: 1px solid var(--rule);
+      border-radius: 6px; padding: 1.1rem 1.4rem; margin-bottom: 10px; margin-left: 8px;
+    }
+    .email-when {
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--navy); margin-bottom: 0.3rem;
+    }
+    .email-subject { font-size: 0.9rem; font-weight: 600; color: var(--text-headline); margin-bottom: 0.35rem; }
+    .email-purpose { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* DM SCRIPT */
+    .dm-script { margin: 1.5rem 0; }
+    .dm-row {
+      display: flex; gap: 1rem; padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--rule); align-items: flex-start;
+    }
+    .dm-row:last-child { border-bottom: none; }
+    .dm-letter {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--navy-pale); color: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 700; flex-shrink: 0;
+    }
+    .dm-word { font-size: 0.78rem; font-weight: 700; color: var(--navy); margin-bottom: 0.2rem; }
+    .dm-text { font-size: 0.85rem; color: var(--text-body); font-style: italic; }
+
+    /* MONEY MODEL */
+    .money-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin: 1.5rem 0;
+    }
+    .money-card {
+      background: var(--white); border: 1px solid var(--rule);
+      border-radius: 6px; padding: 1.25rem;
+    }
+    .money-card-label {
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem;
+    }
+    .money-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--text-headline); margin-bottom: 0.4rem; }
+    .money-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+    .money-card.active { border-color: var(--navy); background: var(--navy-pale); }
+    .money-card.active h4 { color: var(--navy); }
+
+    /* RULE OF 100 */
+    .rule100 {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px; margin: 1.5rem 0;
+    }
+    .rule100-card {
+      background: var(--white); border: 1px solid var(--rule);
+      border-radius: 6px; padding: 1.25rem; text-align: center;
+    }
+    .rule100-num {
+      font-family: var(--font-display); font-size: 3rem; font-weight: 300;
+      color: var(--navy); line-height: 1;
+    }
+    .rule100-unit { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; margin: 0.3rem 0; }
+    .rule100-desc { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* PLATFORM CARDS */
+    .platform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 1.5rem 0; }
+    .platform-card {
+      background: var(--white); border-radius: 6px;
+      padding: 1.5rem; border: 1px solid var(--rule);
+    }
+    .platform-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--text-headline); margin-bottom: 0.6rem; }
+    .platform-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* CONTENT PILLARS */
+    .pillar-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 1.5rem 0; }
+    .pillar { background: var(--white); border-radius: 6px; padding: 1.5rem; border: 1px solid var(--rule); display: flex; gap: 1.25rem; align-items: flex-start; }
+    .pillar-pct { font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; color: var(--navy); min-width: 3.5rem; line-height: 1; }
+    .pillar-body h4 { font-size: 0.88rem; font-weight: 700; color: var(--text-headline); margin-bottom: 0.4rem; }
+    .pillar-body p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* FREQ TABLE */
+    .freq-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+    .freq-table th, .freq-table td { text-align: left; padding: 0.85rem 1rem; border-bottom: 1px solid var(--rule); font-size: 0.85rem; }
+    .freq-table th { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); background: var(--white); }
+    .freq-table tr:last-child td { border-bottom: none; }
+
+    /* WEEK GRID */
+    .week-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 1.5rem 0; }
+    .week-card { background: var(--white); border-radius: 6px; padding: 1.5rem; border: 1px solid var(--rule); }
+    .week-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--navy); display: block; margin-bottom: 0.5rem; }
+    .week-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--text-headline); margin-bottom: 0.75rem; }
+    .week-card ul { padding-left: 1.1rem; }
+    .week-card ul li { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.35rem; }
+
+    /* HASHTAG PILLS */
+    .tag-group { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0 1.25rem; }
+    .tag { font-size: 0.72rem; color: var(--navy); background: var(--navy-pale); padding: 0.25rem 0.65rem; border-radius: 100px; font-weight: 500; }
+
+    /* CAPTION CARDS */
+    .platform-section-label {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin: 2rem 0 1rem; font-size: 0.78rem; color: var(--text-muted);
+    }
+    .platform-badge {
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; padding: 0.25rem 0.65rem;
+      border-radius: 4px; color: #fff;
+    }
+    .platform-badge.ig { background: #c13584; }
+    .platform-badge.tt { background: #010101; }
+    .platform-badge.fb { background: #1877f2; }
+    .caption-card { background: var(--white); border-radius: 6px; padding: 1.35rem 1.5rem; margin-bottom: 1rem; border: 1px solid var(--rule); }
+    .caption-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.6rem; }
+    .caption-hook { font-size: 0.88rem; font-weight: 600; color: var(--text-headline); margin-bottom: 0.5rem; line-height: 1.45; }
+    .caption-text { font-size: 0.85rem; color: var(--text-body); white-space: pre-line; line-height: 1.75; }
+
+    /* ADS BOX */
+    .ads-box { background: var(--navy); border-radius: 6px; padding: 2rem 2.25rem; margin: 1.5rem 0; color: #fff; }
+    .ads-box h3 { color: rgba(255,255,255,0.45); margin-top: 1rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .ads-box h3:first-child { margin-top: 0; }
+    .ads-box p { color: rgba(255,255,255,0.75); margin-bottom: 0.4rem; font-size: 0.88rem; }
+    .ads-box ul { margin-left: 1.25rem; }
+    .ads-box ul li { color: rgba(255,255,255,0.75); font-size: 0.88rem; margin-bottom: 0.3rem; }
+
+    /* PROMPT CARDS */
+    .prompt-card { background: var(--cream-deep); border-radius: 4px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; font-size: 0.85rem; color: var(--text-body); line-height: 1.7; font-style: italic; }
+    .prompt-label { font-style: normal; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.5rem; }
+
+    /* AMBER NOTE */
+    .amber-note {
+      background: var(--amber-pale); border-left: 3px solid var(--amber);
+      padding: 1rem 1.25rem; border-radius: 0 4px 4px 0;
+      margin: 1rem 0; font-size: 0.85rem; color: var(--text-body);
+    }
+    .amber-note strong { color: var(--amber); }
+
+    /* DOC FOOTER */
+    .doc-footer {
+      background: var(--text-headline); padding: 3rem 4rem; margin-top: 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .doc-footer img { height: 44px; filter: brightness(0) invert(1); opacity: 0.6; }
+    .doc-footer p { font-size: 0.72rem; color: rgba(255,255,255,0.25); margin: 0; }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--rule); margin: 3rem 0; }
+
+    /* PRINT */
+    @media print {
+      .print-bar { display: none; }
+      .cover { min-height: 100vh; }
+      .page { padding: 3rem 2.5rem; }
+      .platform-grid, .rule100 { grid-template-columns: repeat(3, 1fr); }
+      .pillar-list, .week-grid { grid-template-columns: 1fr 1fr; }
+      .money-grid { grid-template-columns: repeat(3, 1fr); }
+      .value-eq { grid-template-columns: 1fr auto 1fr auto 1fr; }
+      body { background: #fff; }
+      .cover, .callout, .ads-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="print-bar">
+  <button class="print-btn" onclick="window.print()">Save as PDF</button>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-logo">
+    <img src="https://www.rollingtime.co.za/cdn/shop/files/SmartProp_Social_Media_Posts_-5-removebg-preview_copy.png?height=200&v=1768479644" alt="Rolling Time">
+  </div>
+  <p class="cover-label">Growth Marketing</p>
+  <h1>Full Marketing<br>Playbook.</h1>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <p class="cover-meta-label">Brand</p>
+      <p class="cover-meta-value">Rolling Time</p>
+    </div>
+    <div class="cover-meta-item">
+      <p class="cover-meta-label">Platforms</p>
+      <p class="cover-meta-value">Instagram, TikTok, Facebook</p>
+    </div>
+    <div class="cover-meta-item">
+      <p class="cover-meta-label">Prepared</p>
+      <p class="cover-meta-value">June 2026</p>
+    </div>
+    <div class="cover-meta-item">
+      <p class="cover-meta-label">Phase</p>
+      <p class="cover-meta-value">Launch</p>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="page">
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 01 - THE OFFER -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="section-intro">
+    <p class="eyebrow">01 - The Offer</p>
+    <h2>What We Are Actually Selling.</h2>
+    <p>Nobody wakes up wanting a wooden tray. They wake up wanting to feel like their ritual is intentional. Nobody buys a watch for the time. They buy it for what it says about them. Sell the outcome, not the object.</p>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">The Dream Outcome</div>
+    <h3>A rolling setup that looks like it belongs next to your best bottle of whisky. Made by hand. Made in Cape Town. Nothing like what everyone else has.</h3>
+    <p>This is what the customer is actually buying. Every piece of content, every caption, every email, every ad must point back to this outcome. Not the wood. Not the finish. The feeling of having something that is genuinely better.</p>
+  </div>
+
+  <!-- VALUE EQUATION -->
+  <div class="section-intro" style="margin-top:2.5rem;">
+    <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:300;color:var(--text-headline);margin-bottom:0.5rem;">The Value Equation.</h3>
+    <p style="color:var(--text-muted);font-size:0.85rem;">Every purchase decision is unconsciously weighed against this formula. Your job is to maximise the top and minimise the bottom.</p>
+  </div>
+
+  <div class="value-eq">
+    <div class="ve-factor up">
+      <div class="ve-label">Maximise</div>
+      <div class="ve-name">Dream Outcome</div>
+      <div class="ve-desc">Premium ritual. Something people notice and ask about. A real piece of craft on their table.</div>
+    </div>
+    <div class="ve-op">x</div>
+    <div class="ve-factor up">
+      <div class="ve-label">Maximise</div>
+      <div class="ve-name">Likelihood of Success</div>
+      <div class="ve-desc">Photos of real craftsmanship. Handmade in Cape Town. Named collection. Limited run.</div>
+    </div>
+    <div class="ve-op">/</div>
+    <div class="ve-factor down">
+      <div class="ve-label">Minimise</div>
+      <div class="ve-name">Time + Effort</div>
+      <div class="ve-desc">Ships in 2-3 days. PayFast checkout. Free delivery. No friction at all.</div>
+    </div>
+  </div>
+
+  <!-- GRAND SLAM OFFER -->
+  <div class="section-intro" style="margin-top:2.5rem;">
+    <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:300;color:var(--text-headline);margin-bottom:0.5rem;">The Grand Slam Offer.</h3>
+    <p style="color:var(--text-muted);font-size:0.85rem;">Stack every element until the price feels like a no-brainer. The goal is to make the customer feel stupid for not buying. Every item below must be communicated clearly on the website and in your content.</p>
+  </div>
+
+  <div class="offer-stack">
+    <div class="offer-item">
+      <div class="offer-tick">1</div>
+      <div>
+        <div class="offer-item-title">The Handcrafted Rolling Tray (R420)</div>
+        <div class="offer-item-desc">Shaped, stained, and finished by hand in Cape Town. Real wood. No factory. No shortcuts. One of seven named designs in the limited Y1 Collection.</div>
+      </div>
+    </div>
+    <div class="offer-item">
+      <div class="offer-tick">2</div>
+      <div>
+        <div class="offer-item-title">Free Delivery Across South Africa</div>
+        <div class="offer-item-desc">No hidden shipping cost at checkout. This removes a major friction point and must be stated clearly everywhere — not buried in the footer.</div>
+      </div>
+    </div>
+    <div class="offer-item">
+      <div class="offer-tick">3</div>
+      <div>
+        <div class="offer-item-title">10% Off Your First Order (ROLL10)</div>
+        <div class="offer-item-desc">Captured via the popup scraper mechanic. This is the entry offer — the lead magnet that turns a visitor into a subscriber and a subscriber into a buyer.</div>
+      </div>
+    </div>
+    <div class="offer-item">
+      <div class="offer-tick">4</div>
+      <div>
+        <div class="offer-item-title">Ships in 2-3 Business Days</div>
+        <div class="offer-item-desc">State this on every product page, at checkout, and in your social content. Speed reduces hesitation. People do not want to wait two weeks. Tell them they won't.</div>
+      </div>
+    </div>
+    <div class="offer-item">
+      <div class="offer-tick">5</div>
+      <div>
+        <div class="offer-item-title">30-Day No-Questions Return Guarantee</div>
+        <div class="offer-item-desc">The single most important thing missing from the current offer. Add this now. "If you don't love it, send it back within 30 days and we'll refund you in full." This absorbs all the risk. The customer has nothing to lose.</div>
+      </div>
+    </div>
+    <div class="offer-item">
+      <div class="offer-tick">6</div>
+      <div>
+        <div class="offer-item-title">Limited Edition — Collection Y1 Will Not Be Restocked</div>
+        <div class="offer-item-desc">This is real scarcity, not manufactured. Use it. When a piece sells out it is gone. State this clearly. "Seven designs. One run. No restock planned." This alone can close a hesitant buyer.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="amber-note">
+    <strong>Action item:</strong> Add the 30-day return guarantee to every product page above the "Pay with PayFast" button. One sentence is enough. "Not in love with it? Return within 30 days for a full refund." This will increase conversion immediately.
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 02 - MONEY MODEL -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <hr class="divider">
+  <div class="section-intro">
+    <p class="eyebrow">02 - Money Model</p>
+    <h2>How the Revenue Works.</h2>
+    <p>Most businesses only use one revenue mode. Rolling Time should be running at least three from day one.</p>
+  </div>
+
+  <div class="money-grid">
+    <div class="money-card active">
+      <div class="money-card-label">Attraction Offer</div>
+      <h4>ROLL10 Popup</h4>
+      <p>10% off first order. Captures the email. Turns a visitor into a lead. This is already live.</p>
+    </div>
+    <div class="money-card active">
+      <div class="money-card-label">Core Offer</div>
+      <h4>Rolling Tray — R420</h4>
+      <p>The main product. Full margin. Seven designs. This is already live.</p>
+    </div>
+    <div class="money-card">
+      <div class="money-card-label">Upsell (build this)</div>
+      <h4>Tray Care Kit</h4>
+      <p>Beeswax wood polish + care cloth. Offered at checkout or in the email sequence. R80-R120. Zero extra marketing needed.</p>
+    </div>
+    <div class="money-card">
+      <div class="money-card-label">Continuity (build this)</div>
+      <h4>Collection Y2 Waitlist</h4>
+      <p>After Y1 sells out, capture demand for Y2 via a waitlist. These are warm buyers. They have already decided to spend.</p>
+    </div>
+    <div class="money-card">
+      <div class="money-card-label">Win-Back</div>
+      <h4>Past Buyer Email</h4>
+      <p>Email everyone who bought Y1 when Y2 launches. They already trust you. Past buyers convert at 5x the rate of new visitors.</p>
+    </div>
+    <div class="money-card">
+      <div class="money-card-label">Wholesale Pipeline</div>
+      <h4>Boutique Retail</h4>
+      <p>Gift shops, lifestyle stores, concept stores in Cape Town and Joburg. Already tracked in your dashboard. Priority channel post-registration.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 03 - LEAD GENERATION -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <hr class="divider">
+  <div class="section-intro">
+    <p class="eyebrow">03 - Lead Generation</p>
+    <h2>The Rule of 100.</h2>
+    <p>Pick your primary channel. Do 100 units of activity on it every single day until it produces results. Do not switch channels when it feels slow. Switching is why most people never get traction. The rule: you must do 100 daily for a minimum of 90 days before you judge the channel.</p>
+  </div>
+
+  <div class="rule100">
+    <div class="rule100-card">
+      <div class="rule100-num">1</div>
+      <div class="rule100-unit">post per day</div>
+      <div class="rule100-desc">TikTok is your primary growth channel. One short-form video every single day. This is the Rule of 100 applied to content.</div>
+    </div>
+    <div class="rule100-card">
+      <div class="rule100-num">100</div>
+      <div class="rule100-unit">minutes per day</div>
+      <div class="rule100-desc">Minimum content creation time. Filming, editing, writing captions, engaging with comments and DMs. This is the work.</div>
+    </div>
+    <div class="rule100-card">
+      <div class="rule100-num">90</div>
+      <div class="rule100-unit">days before you judge</div>
+      <div class="rule100-desc">You will not see results in week one or week two. The algorithm rewards consistency over time. Commit to 90 days before changing anything.</div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:1.5rem;">
+    <div class="callout-label">Lead Channel Priority for Rolling Time</div>
+    <h3>Content first. Warm outreach second. Paid ads third.</h3>
+    <ul>
+      <li><strong>Content (TikTok + Instagram Reels)</strong> — highest ROI, lowest cost, builds the brand permanently. Start here.</li>
+      <li><strong>Warm Outreach</strong> — DM every person who likes, comments, or follows. They raised their hand. Treat it like a sales call. Use the CLOSER script in Section 05.</li>
+      <li><strong>Paid Ads (Meta)</strong> — only activate once you have 500+ pixel events and at least one organic post that performed well. Use the winner as the ad creative. Starting blind wastes budget.</li>
+    </ul>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 04 - EMAIL NURTURE -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <hr class="divider">
+  <div class="section-intro">
+    <p class="eyebrow">04 - Email Sequence</p>
+    <h2>Turn Leads into Buyers.</h2>
+    <p>The popup captures an email address. That is the start of the relationship, not the end. Most businesses send one welcome email and then silence. This five-email sequence converts leads into first-time buyers and builds enough trust that they buy again.</p>
+  </div>
+
+  <div class="email-seq">
+    <div class="email-step">
+      <div class="email-step-left">
+        <div class="email-dot">1</div>
+        <div class="email-line"></div>
+      </div>
+      <div class="email-body">
+        <div class="email-when">Immediately on signup</div>
+        <div class="email-subject">Welcome to Rolling Time. Your code is inside.</div>
+        <div class="email-purpose">Deliver the ROLL10 code. Warm greeting. One sentence about what Rolling Time is. One CTA: Shop the Collection. Keep it short. They signed up for the discount — give it to them first.</div>
+      </div>
+    </div>
+    <div class="email-step">
+      <div class="email-step-left">
+        <div class="email-dot">2</div>
+        <div class="email-line"></div>
+      </div>
+      <div class="email-body">
+        <div class="email-when">Day 2</div>
+        <div class="email-subject">Why we started Rolling Time.</div>
+        <div class="email-purpose">Tell the story. Why does this exist? Who makes it? Where is the workshop? This builds the "perceived likelihood of achievement" — the customer is buying from a real person with a real craft. This email has no hard sell. Just the story.</div>
+      </div>
+    </div>
+    <div class="email-step">
+      <div class="email-step-left">
+        <div class="email-dot">3</div>
+        <div class="email-line"></div>
+      </div>
+      <div class="email-body">
+        <div class="email-when">Day 4</div>
+        <div class="email-subject">What makes the wood different.</div>
+        <div class="email-purpose">Educate. How is the wood selected? How is the finish applied? Why does this tray last? This email destroys the objection "it's just a wooden tray." It proves the outcome is real. End with a soft CTA to the collection.</div>
+      </div>
+    </div>
+    <div class="email-step">
+      <div class="email-step-left">
+        <div class="email-dot">4</div>
+        <div class="email-line"></div>
+      </div>
+      <div class="email-body">
+        <div class="email-when">Day 7</div>
+        <div class="email-subject">Collection Y1 is almost gone.</div>
+        <div class="email-purpose">Scarcity. This is real — you have limited stock and no restock planned. State how many pieces remain. Name the ones that are selling fastest. This creates urgency without being fake. End with a direct CTA and the ROLL10 reminder.</div>
+      </div>
+    </div>
+    <div class="email-step">
+      <div class="email-step-left">
+        <div class="email-dot">5</div>
+        <div class="email-line"></div>
+      </div>
+      <div class="email-body">
+        <div class="email-when">Day 10</div>
+        <div class="email-subject">Your code expires in 48 hours.</div>
+        <div class="email-purpose">Final push. The ROLL10 code is about to expire (set an expiry date in your dashboard). This is the last chance email. Keep it short. One sentence: "Your 10% off code expires in 48 hours." One button: Shop Now. Nothing else.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="amber-note">
+    <strong>Note on email tone:</strong> No em-dashes. No buzzwords. No "incredible" or "amazing." Plain language. Short sentences. Write like you are texting a friend who you know will appreciate a good product. That is your customer.
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 05 - DM CLOSER SCRIPT -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <hr class="divider">
+  <div class="section-intro">
+    <p class="eyebrow">05 - DM Sales Script</p>
+    <h2>The CLOSER Framework for Instagram DMs.</h2>
+    <p>Every person who likes your post, follows your account, or comments is a warm lead. They have already shown interest. DM them. Use this script. A reply rate of 20-30% is normal. A conversion rate of 5-10% from DM to sale is achievable.</p>
+  </div>
+
+  <div class="dm-script" style="background:var(--white);border:1px solid var(--rule);border-radius:6px;overflow:hidden;">
+    <div class="dm-row">
+      <div class="dm-letter">C</div>
+      <div>
+        <div class="dm-word">Clarify</div>
+        <div class="dm-text">"Hey, thanks for following. What brought you to our page?"</div>
+      </div>
+    </div>
+    <div class="dm-row">
+      <div class="dm-letter">L</div>
+      <div>
+        <div class="dm-word">Label</div>
+        <div class="dm-text">"So you're looking for something that actually looks intentional on your table, not just functional?"</div>
+      </div>
+    </div>
+    <div class="dm-row">
+      <div class="dm-letter">O</div>
+      <div>
+        <div class="dm-word">Overview Past Pain</div>
+        <div class="dm-text">"What are you using now? Most people we talk to have one of those cheap plastic ones from the headshop — or nothing at all."</div>
+      </div>
+    </div>
+    <div class="dm-row">
+      <div class="dm-letter">S</div>
+      <div>
+        <div class="dm-word">Sell the Vacation</div>
+        <div class="dm-text">"Imagine having something on your table that people actually pick up and ask about. Real wood, shaped and finished by hand in Cape Town. Every piece is different because the grain decides."</div>
+      </div>
+    </div>
+    <div class="dm-row">
+      <div class="dm-letter">E</div>
+      <div>
+        <div class="dm-word">Explain Your Solution</div>
+        <div class="dm-text">"We ship free across SA and it arrives in 2-3 days. Collection Y1 is limited — seven designs, no restock planned. When they go, they go."</div>
+      </div>
+    </div>
+    <div class="dm-row">
+      <div class="dm-letter">R</div>
+      <div>
+        <div class="dm-word">Reinforce</div>
+        <div class="dm-text">"R420 with free shipping. Use ROLL10 at checkout for 10% off your first order, and we have a 30-day return guarantee so there's no risk. Want me to send you the direct link?"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 06 - PLATFORM STRATEGY -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <hr class="divider">
+  <div class="section-intro">
+    <p class="eyebrow">06 - Platform Strategy</p>
+    <h2>Platform Strategy.</h2>
+    <p>Each platform has a different job. Run them in parallel but do not post identical content on all three. Repurpose, do not duplicate.</p>
+  </div>
+
+  <div class="platform-grid">
+    <div class="platform-card">
+      <h4>Instagram</h4>
+      <p>Your brand home. This is where people discover you, judge your quality, and decide to buy. Every post must make the product look like it belongs next to something that costs twice as much. Feed is your portfolio. Reels are your reach engine. Stories are your daily relationship builder.</p>
+    </div>
+    <div class="platform-card">
+      <h4>TikTok</h4>
+      <p>Your growth engine and your Rule of 100 channel. The algorithm rewards craft and process content. You do not need a large following to reach tens of thousands of people. One good video of wood being stained can outperform months of Instagram work. Post daily. No exceptions for 90 days.</p>
+    </div>
+    <div class="platform-card">
+      <h4>Facebook</h4>
+      <p>Your community and retargeting layer. Less about organic growth, more about holding your audience and running paid ads once the Meta Pixel has data. The 28-45 age group with disposable income is here. Your TikTok best performers go here as paid ads.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 07 - CONTENT PILLARS -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <hr class="divider">
+  <div class="section-intro">
+    <p class="eyebrow">07 - Content</p>
+    <h2>Content Pillars.</h2>
+    <p>Every piece of content must do one of two things: attract new eyeballs or deepen trust with existing followers. It should also point — directly or indirectly — at the dream outcome. If a post does not fit one of these pillars, do not post it.</p>
+  </div>
+
+  <div class="pillar-list">
+    <div class="pillar">
+      <div class="pillar-pct">40%</div>
+      <div class="pillar-body">
+        <h4>Craft</h4>
+        <p>The making of the product. Wood grain. Hand finishing. The workshop. Before and after. Your strongest point of difference and your biggest trust builder. This content proves the outcome is real.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-pct">30%</div>
+      <div class="pillar-body">
+        <h4>Product</h4>
+        <p>Clean, beautiful shots of the trays. Individual pieces. The full collection. Detail shots. Your catalogue. This is what converts a warm follower into a buyer. Make it look more expensive than it is.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-pct">20%</div>
+      <div class="pillar-body">
+        <h4>Culture</h4>
+        <p>Cape Town. The aesthetic of your customer's life. A clean surface. Morning light. The way the tray sits in a real space. This pillar sells the identity, not the product. Your customer wants to be the person who owns this.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-pct">10%</div>
+      <div class="pillar-body">
+        <h4>Community</h4>
+        <p>Customer reposts. Comments turned into content. Questions. Polls. Behind the scenes of running a small business. Social proof and connection. This is what creates loyalty past the first purchase.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOOK FORMULA -->
+  <div class="callout" style="margin-top:1.5rem;">
+    <div class="callout-label">The Hook Formula — Every Caption, Every Video</div>
+    <h3>Lead with the pain. Agitate it. Then offer the solution.</h3>
+    <p><strong>Weak hook:</strong> "Our handcrafted tray is perfect for any rolling ritual."</p>
+    <p><strong>Strong hook:</strong> "You've been rolling on a plastic tray from a headshop. It looks like an afterthought. It is an afterthought. There is another option."</p>
+    <p>The first sentence of every caption and the first three seconds of every video decide whether someone stops or keeps scrolling. Write the hook last, after you know what you are saying. Then make it the first thing they see.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 08 - POSTING SCHEDULE -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <hr class="divider">
+  <div class="section-intro">
+    <p class="eyebrow">08 - Schedule</p>
+    <h2>Posting Schedule.</h2>
+    <p>Start at these numbers. Once you find what performs, double down on that format and reduce time on what does not work.</p>
+  </div>
+
+  <table class="freq-table">
+    <thead>
+      <tr>
+        <th>Platform</th>
+        <th>Feed Posts</th>
+        <th>Stories</th>
+        <th>Reels / Videos</th>
+        <th>DM Outreach</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Instagram</strong></td><td>4x per week</td><td>Daily</td><td>3x per week</td><td>Every new follower + commenter</td></tr>
+      <tr><td><strong>TikTok</strong></td><td>-</td><td>-</td><td>1x per day (Rule of 100)</td><td>Reply to every comment</td></tr>
+      <tr><td><strong>Facebook</strong></td><td>3x per week</td><td>-</td><td>2x per week (repurposed from TikTok)</td><td>-</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 09 - 4-WEEK LAUNCH PLAN -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <hr class="divider">
+  <div class="section-intro">
+    <p class="eyebrow">09 - Launch Calendar</p>
+    <h2>First 4 Weeks.</h2>
+    <p>A structured launch sequence. Each week has a clear objective and ties back to the offer and money model.</p>
+  </div>
+
+  <div class="week-grid">
+    <div class="week-card">
+      <span class="week-label">Week 1 — Introduce</span>
+      <h4>Show them what exists and why it is different</h4>
+      <ul>
+        <li>3 posts: product detail — lead each caption with a pain hook</li>
+        <li>1 Reel/TikTok: slow collection reveal, music only</li>
+        <li>1 behind-the-scenes: workshop or hands finishing a tray</li>
+        <li>Facebook: brand introduction with guarantee stated</li>
+        <li>DM everyone who follows in week 1 using CLOSER script</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <span class="week-label">Week 2 — Tell the Story</span>
+      <h4>Build perceived likelihood — prove the outcome is real</h4>
+      <ul>
+        <li>2 product posts</li>
+        <li>1 Reel/TikTok: raw wood to finished tray process</li>
+        <li>1 lifestyle post: tray in a real setting, outcome-first caption</li>
+        <li>Instagram Story: poll — which finish is your favourite?</li>
+        <li>Facebook: craft story post with workshop photo</li>
+        <li>Email: send Email 2 (the story) to any leads captured</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <span class="week-label">Week 3 — Build Desire</span>
+      <h4>Scarcity, social proof, and the identity sell</h4>
+      <ul>
+        <li>2 product posts: use scarcity messaging</li>
+        <li>1 Reel/TikTok: close-up grain and finish — no talking, ASMR feel</li>
+        <li>1 post: all 7 pieces together — "Seven designs. No restock."</li>
+        <li>Instagram Story: limited run messaging with stock counter</li>
+        <li>Facebook: share best-performing TikTok</li>
+        <li>Email: send Email 3 (craft education) + Email 4 (scarcity)</li>
+      </ul>
+    </div>
+    <div class="week-card">
+      <span class="week-label">Week 4 — Drive to Sale</span>
+      <h4>Remove all remaining friction and close</h4>
+      <ul>
+        <li>2 product posts with direct CTA</li>
+        <li>1 Reel/TikTok: pack and ship video — makes the purchase feel real</li>
+        <li>1 post: guarantee post — "30-day return. Free shipping. ROLL10 for 10% off."</li>
+        <li>Instagram Story: link sticker directly to the tray they viewed most</li>
+        <li>Facebook: R300 paid boost on best-performing post</li>
+        <li>Email: send Email 5 (code expiry) to unconverted leads</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 10 - HASHTAGS -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <hr class="divider">
+  <div class="section-intro">
+    <p class="eyebrow">10 - Hashtags</p>
+    <h2>Hashtag Strategy.</h2>
+    <p>Hashtags are discoverability tools, not magic. On TikTok the algorithm matters more than hashtags. On Instagram use 8-12 per post. Do not use the same set every time — rotate to avoid repetition penalties.</p>
+  </div>
+
+  <h3 style="font-size:0.82rem;font-weight:700;color:var(--text-headline);margin-bottom:0.5rem;">Instagram — use 8 to 12 per post</h3>
+  <div class="tag-group">
+    <span class="tag">#rollingtray</span><span class="tag">#woodcraft</span><span class="tag">#handcrafted</span><span class="tag">#woodwork</span><span class="tag">#capetown</span><span class="tag">#madeinsa</span><span class="tag">#southafrica</span><span class="tag">#capetowncraft</span><span class="tag">#slowliving</span><span class="tag">#craftsman</span><span class="tag">#woodendesign</span><span class="tag">#artisanmade</span><span class="tag">#smallbusinesssa</span><span class="tag">#420lifestyle</span><span class="tag">#premiumwood</span>
+  </div>
+
+  <h3 style="font-size:0.82rem;font-weight:700;color:var(--text-headline);margin-bottom:0.5rem;">TikTok — use 4 to 6 per post</h3>
+  <div class="tag-group">
+    <span class="tag">#woodworking</span><span class="tag">#craftsman</span><span class="tag">#satisfying</span><span class="tag">#handmade</span><span class="tag">#capetown</span><span class="tag">#smallbusiness</span>
+  </div>
+
+  <h3 style="font-size:0.82rem;font-weight:700;color:var(--text-headline);margin-bottom:0.5rem;">Facebook — use 3 to 5 per post</h3>
+  <div class="tag-group">
+    <span class="tag">#rollingtray</span><span class="tag">#handcrafted</span><span class="tag">#capetown</span><span class="tag">#madeinsa</span><span class="tag">#woodcraft</span>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 11 - CAPTIONS -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <hr class="divider">
+  <div class="section-intro">
+    <p class="eyebrow">11 - Captions</p>
+    <h2>Ready-to-Post Captions.</h2>
+    <p>All captions below lead with a hook — the first line is written to stop a scroll. Copy and paste. Adapt the product name where indicated. The hook is in bold so you can see the pattern.</p>
+  </div>
+
+  <!-- Instagram -->
+  <div class="platform-section-label">
+    <span class="platform-badge ig">Instagram</span>
+    <span>9 captions</span>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Post 1 - Collection launch</p>
+    <p class="caption-hook">Seven pieces. One collection. Nothing like what you have seen before.</p>
+    <p class="caption-text">Each tray in the Y1 collection is shaped and finished by hand in Cape Town. No two pieces are identical. The wood decides the grain, the grain decides the finish.
+
+This is not mass-produced. This is not from a factory. This is made by hand, in a workshop, with the intention of lasting longer than anything you would buy for the same price.
+
+Collection Y1. Limited run. No restock planned.
+
+Link in bio to shop.
+
+#rollingtray #handcrafted #woodcraft #capetown #madeinsa #woodwork #artisanmade #slowliving</p>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Post 2 - Pain hook</p>
+    <p class="caption-hook">You have been rolling on a piece of plastic from a headshop. It looks like an afterthought. Because it is.</p>
+    <p class="caption-text">There is another option.
+
+Rolling Time makes handcrafted wooden rolling trays in Cape Town. Real wood. Finished by hand. Made once and not repeated.
+
+R420 with free shipping across South Africa. Use ROLL10 for 10% off your first order.
+
+Collection Y1 is limited. Link in bio.
+
+#rollingtray #woodcraft #handcrafted #capetown #420lifestyle #madeinsa #premiumwood #artisanmade</p>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Post 3 - Product feature (replace [NAME] with the tray name)</p>
+    <p class="caption-hook">This is [NAME]. You will not find another one exactly like it.</p>
+    <p class="caption-text">The grain runs its own way. The finish is applied by hand. The edges are broken so it sits right.
+
+Part of the Rolling Time Y1 Collection. Made in Cape Town. Ships in 2-3 business days. Free delivery across South Africa.
+
+Not in love with it? Return it within 30 days. Full refund. No questions.
+
+Link in bio.
+
+#rollingtray #woodcraft #handcrafted #capetown #woodwork #artisanmade #wooddesign #slowliving</p>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Post 4 - Craft focus</p>
+    <p class="caption-hook">Most things you own were made by a machine that has never seen the material it was working with. This is different.</p>
+    <p class="caption-text">Every Rolling Time tray starts as a piece of raw wood. It is shaped, stained, and finished by hand in our Cape Town workshop. No shortcuts. No cutting corners on the finish because the finish is the point.
+
+This is where it begins.
+
+#woodworking #craftsman #handcrafted #madeinsa #capetown #woodcraft #artisanmade #makersgonnamake</p>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Post 5 - Full collection flat-lay</p>
+    <p class="caption-hook">Seven designs. One run. When they sell out, they are gone.</p>
+    <p class="caption-text">Atlantic Breeze. Ember. Golden Hour. Mahogany Mist. Midnight Ritual. Minted Moment. Pure Grain.
+
+Each one is different. Each one made once and not repeated. Collection Y1 is a limited run — we are not planning a restock of these specific pieces.
+
+If one of these is yours, now is the time.
+
+Shop at rollingtime.co.za
+
+#rollingtray #woodcraft #handcrafted #capetown #woodwork #collection #artisanmade #madeinsa</p>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Post 6 - Behind the scenes</p>
+    <p class="caption-hook">The work nobody sees is the reason it looks the way it does when it arrives.</p>
+    <p class="caption-text">Sanding. Staining. Letting it dry. Checking the finish in different light. Doing it again if it is not right. This is the job.
+
+Rolling Time is made in Cape Town by hand. Not because it is a marketing angle. Because there is no other way to do this properly.
+
+#woodworking #craftsman #behindthescenes #handcrafted #capetown #smallbusiness #madeinsa #makerspace</p>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Post 7 - Guarantee post</p>
+    <p class="caption-hook">If you are on the fence, here is the deal: you have nothing to lose.</p>
+    <p class="caption-text">Free shipping across South Africa. Arrives in 2-3 business days. 30-day return guarantee — if you do not love it, send it back and we will refund you in full. No questions.
+
+And if it is your first order, use ROLL10 at checkout for 10% off.
+
+R420 for something made by hand in Cape Town. Link in bio.
+
+#rollingtray #capetown #madeinsa #woodcraft #handcrafted #smallbusiness</p>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Post 8 - Community / tag us</p>
+    <p class="caption-hook">We ship all over South Africa. We want to see where they end up.</p>
+    <p class="caption-text">Joburg. Durban. PE. Cape Town. If you have a Rolling Time piece, tag us. We will share your setup.
+
+Every tray in Y1 was made in our Cape Town workshop. Seeing them out in the world is the point.
+
+#rollingtray #capetown #madeinsa #woodcraft #handcrafted</p>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Post 9 - Identity sell</p>
+    <p class="caption-hook">Your setup says something about you before you say anything.</p>
+    <p class="caption-text">Most people's rolling setup is whatever was cheapest at the time. That is fine. Or you could have something that was made by hand in Cape Town, designed to last, and built to be noticed.
+
+Rolling Time Y1 Collection. R420. Free delivery. Link in bio.
+
+#rollingtray #woodcraft #handcrafted #capetown #woodwork #artisanmade #420lifestyle #madeinsa</p>
+  </div>
+
+  <!-- TikTok -->
+  <div class="platform-section-label">
+    <span class="platform-badge tt">TikTok</span>
+    <span>6 video scripts</span>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Video 1 - Collection reveal (no talking, music only)</p>
+    <p class="caption-hook">HOOK (text overlay, first 3 seconds): "This is what a R420 handmade rolling tray looks like."</p>
+    <p class="caption-text">Visual: slow pan across all 7 trays on a wooden surface, morning light, close-up of each finish and edge detail.
+
+Caption: Seven handcrafted wooden rolling trays. Made in Cape Town. Rolling Time Y1 Collection. Free delivery across SA. Link in bio.
+
+#woodworking #craftsman #satisfying #handmade #capetown #smallbusiness #rollingtray #woodcraft</p>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Video 2 - Process (raw wood to finished tray)</p>
+    <p class="caption-hook">HOOK (spoken or text): "This is what it looks like before anyone sees it."</p>
+    <p class="caption-text">Visual: cut edit — rough wood, shaping, sanding, staining, finished product reveal in final frame.
+
+Caption: From raw wood to finished piece. Everything Rolling Time makes is done by hand in Cape Town. Y1 Collection available now. Link in bio.
+
+#woodworking #craftsman #satisfying #handmade #woodcraft #capetown #makerlife #process</p>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Video 3 - Pain + solution (talking to camera)</p>
+    <p class="caption-hook">HOOK (first words): "If you're still using a plastic tray, this video is for you."</p>
+    <p class="caption-text">Script: "Most rolling trays are cheap plastic. They look cheap. They feel cheap. Rolling Time makes wooden trays by hand in Cape Town. Real wood. Finished by hand. R420 with free shipping. Link in bio."
+
+Keep it under 30 seconds. Confidence over production value.
+
+#rollingtray #smallbusiness #woodcraft #capetown #handmade #madeinsa</p>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Video 4 - Close-up grain detail (ASMR style)</p>
+    <p class="caption-hook">HOOK (text overlay): "No two pieces are the same."</p>
+    <p class="caption-text">Visual: extreme close-up of wood grain and stain finish, slow movement, no talking. Let the material do the work.
+
+Caption: The grain is the design. Rolling Time, Cape Town.
+
+#woodworking #satisfying #woodgrain #handcrafted #craftsman #capetown #woodcraft #artisan</p>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Video 5 - Meet the collection</p>
+    <p class="caption-hook">HOOK: "Seven names. Seven pieces. One collection."</p>
+    <p class="caption-text">Visual: each tray picked up and shown individually, name appears as text overlay. End on the full collection laid out.
+
+Caption: Meet the Y1 Collection. Made in Cape Town. Which one is yours?
+
+#rollingtray #woodcraft #handcrafted #capetown #collection #smallbusiness #madeinsa</p>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Video 6 - Pack and ship (builds trust, makes the purchase feel real)</p>
+    <p class="caption-hook">HOOK: "Here is what happens after you order."</p>
+    <p class="caption-text">Visual: wrapping a tray, boxing it, writing the address by hand, sealing the box. Real. No studio.
+
+Script (voice or text): "Packed by hand in Cape Town. Ships within 2-3 business days. Free delivery across South Africa. 30-day return guarantee."
+
+Caption: Packing orders from our Cape Town workshop. Link in bio to get yours.
+
+#smallbusiness #capetown #handmade #woodworking #makerlife #craftsman #entrepreneur #madeinsa</p>
+  </div>
+
+  <!-- Facebook -->
+  <div class="platform-section-label">
+    <span class="platform-badge fb">Facebook</span>
+    <span>4 captions</span>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Post 1 - Launch announcement</p>
+    <p class="caption-hook">Rolling Time is live. Seven handcrafted wooden rolling trays, made by hand in Cape Town.</p>
+    <p class="caption-text">Each piece in the Y1 collection is a limited run. When the stock is gone, it is gone. No restock is planned for these specific designs.
+
+Every tray is shaped, stained, and finished in our Cape Town workshop. No factory. No shortcuts.
+
+R420 with free delivery across South Africa. Not happy with it? Return within 30 days for a full refund.
+
+Use ROLL10 at checkout for 10% off your first order.
+
+Shop the full collection at rollingtime.co.za</p>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Post 2 - Product feature with offer stack</p>
+    <p class="caption-hook">The Atlantic Breeze. Light grain. Matte finish. Edges broken by hand.</p>
+    <p class="caption-text">One of seven pieces in the Rolling Time Y1 Collection. Made in Cape Town.
+
+R420. Free delivery across South Africa. Ships in 2-3 business days. 30-day return guarantee. Use ROLL10 for 10% off your first order.
+
+Collection Y1 is limited stock. No restock planned.
+
+Shop at rollingtime.co.za</p>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Post 3 - Brand story</p>
+    <p class="caption-hook">Rolling Time started with one question: why does everything in this space look the same?</p>
+    <p class="caption-text">Every tray we make is an answer to that. Handcrafted in Cape Town, finished by hand, and made to last longer than anything mass-produced.
+
+Seven pieces available now. Limited run. When they go, they are gone.
+
+If you want one, now is the right time.
+
+rollingtime.co.za</p>
+  </div>
+
+  <div class="caption-card">
+    <p class="caption-title">Post 4 - Guarantee / objection removal</p>
+    <p class="caption-hook">Buying something handmade online feels like a risk. Here is how we remove it.</p>
+    <p class="caption-text">30-day return guarantee. If you do not love your Rolling Time tray, send it back within 30 days and we will refund you in full. No questions asked.
+
+Free delivery across South Africa. Ships in 2-3 business days from our Cape Town workshop. Use ROLL10 at checkout for 10% off your first order.
+
+R420 for something made by hand. No risk. Link below.
+
+rollingtime.co.za</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 12 - PAID ADS -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <hr class="divider">
+  <div class="section-intro">
+    <p class="eyebrow">12 - Paid Advertising</p>
+    <h2>Meta Ads.</h2>
+    <p>Do not start paid ads until your organic content has produced at least one winner. Paid ads amplify what already works. They do not fix content that is not working.</p>
+  </div>
+
+  <div class="ads-box">
+    <h3>When to start</h3>
+    <p>Wait until you have at least 500 website visitors tracked by the Meta Pixel AND at least one organic piece of content that performed significantly better than the others. Use that content as your ad creative.</p>
+
+    <h3>Ad hook formula</h3>
+    <p>First frame of the video or first line of the image must be a pain hook. "Still rolling on a plastic tray?" or "This is what R420 gets you in Cape Town." Not "Check out our products." That is not a hook.</p>
+
+    <h3>First campaign structure</h3>
+    <p>Budget: R300 to R500 per month. One ad only. Test one variable at a time.</p>
+    <p>Format: your best-performing TikTok or Reel repurposed as a Meta ad.</p>
+    <p>Targeting: South Africa, ages 22-42, interests — woodcraft, handmade goods, artisan products, Cape Town, small business.</p>
+    <p>Objective: Traffic to product page OR Conversions (once you have 50+ purchase events on the pixel).</p>
+
+    <h3>Scale rule</h3>
+    <p>Only increase budget when ROAS (Return on Ad Spend) is above 2.0 — meaning for every R1 you spend on ads you make R2 in sales. Check your dashboard. Scale winners. Kill losers after 7 days of data.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 13 - AI IMAGE PROMPTS -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <hr class="divider">
+  <div class="section-intro">
+    <p class="eyebrow">13 - Imagery</p>
+    <h2>AI Image Prompts.</h2>
+    <p>Paste these into Midjourney, Adobe Firefly, or Canva AI to generate mood and lifestyle imagery for posts that do not feature the actual product. Use to fill content gaps between real product shoots.</p>
+  </div>
+
+  <div class="prompt-card">
+    <p class="prompt-label">Lifestyle background - morning light</p>
+    "Flat lay on raw light oak surface, Cape Town morning window light, soft shadows, cream linen cloth partially visible, minimal and editorial, film photography feel, warm tones, 4:5 ratio"
+  </div>
+
+  <div class="prompt-card">
+    <p class="prompt-label">Workshop atmosphere</p>
+    "Artisan woodworking workshop, Cape Town, natural light through large windows, wood shavings on workbench, hand tools arranged neatly, warm afternoon light, shallow depth of field, editorial style"
+  </div>
+
+  <div class="prompt-card">
+    <p class="prompt-label">Wood grain macro detail</p>
+    "Extreme close-up macro photograph of dark stained wood grain, smooth finish, warm studio lighting, dark navy and cream tones, luxury product photography"
+  </div>
+
+  <div class="prompt-card">
+    <p class="prompt-label">Lifestyle - outdoor Cape Town</p>
+    "Wooden tray on a sunlit teak outdoor table, Cape Peninsula coastal background slightly blurred, morning golden hour, editorial lifestyle photography, clean composition"
+  </div>
+
+  <div class="prompt-card">
+    <p class="prompt-label">Brand mood board texture</p>
+    "Abstract flat lay of natural textures - raw linen, smooth wood, cream paper, small dried botanical, navy blue accent, top-down shot, minimal Scandinavian aesthetic, film grain"
+  </div>
+
+  <div class="prompt-card">
+    <p class="prompt-label">Pack and ship lifestyle</p>
+    "Hands wrapping a rectangular wooden object in tissue paper on a cream linen surface, natural light from the left, brown kraft box nearby, small Rolling Time logo visible, editorial product photography, warm and clean"
+  </div>
+
+</div>
+
+<!-- DOC FOOTER -->
+<div class="doc-footer">
+  <img src="https://www.rollingtime.co.za/cdn/shop/files/SmartProp_Social_Media_Posts_-5-removebg-preview_copy.png?height=200&v=1768479644" alt="Rolling Time">
+  <p>Rolling Time - Full Growth Marketing Playbook - June 2026 - Confidential</p>
+</div>
+
+<script>
+  document.querySelector('.print-btn').addEventListener('click', function() { window.print(); });
+</script>
+</body>
+</html>
